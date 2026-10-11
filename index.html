@@ -1,0 +1,3192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lo más Top</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔥</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+  /* ================= TOKENS ================= */
+  :root{
+    --bg:#FBF3EA;
+    --surface:#FFFFFF;
+    --panel:#FFFFFF;
+    --text:#211A12;
+    --text-muted:#7A6C5D;
+    --accent:#E8620C;
+    --accent-2:#B8430A;
+    --accent-soft:#FBE3D0;
+    --on-accent:#1B0E04;
+    --border-strong:#F0C29B;
+    --shadow: 0 2px 4px rgba(33,26,18,0.05), 0 14px 30px -16px rgba(33,26,18,0.14);
+    --shadow-lift: 0 6px 12px rgba(33,26,18,0.06), 0 32px 60px -24px rgba(33,26,18,0.28);
+    --glass: rgba(255,255,255,0.72);
+    --grid-line: rgba(33,26,18,0.055);
+    color-scheme: light;
+  }
+
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0E0A06;
+      --surface:#171310;
+      --panel:#171310;
+      --text:#F7ECDD;
+      --text-muted:#B6A48D;
+      --shadow: 0 2px 4px rgba(0,0,0,0.4), 0 18px 40px -18px rgba(0,0,0,0.8);
+      --shadow-lift: 0 8px 18px rgba(0,0,0,0.5), 0 40px 80px -30px rgba(0,0,0,0.9);
+      --glass: rgba(23,19,16,0.66);
+      --grid-line: rgba(255,255,255,0.045);
+      color-scheme: dark;
+    }
+  }
+
+  :root[data-theme="dark"]{
+    --bg:#0E0A06;
+    --surface:#171310;
+    --panel:#171310;
+    --text:#F7ECDD;
+    --text-muted:#B6A48D;
+    --shadow: 0 2px 4px rgba(0,0,0,0.4), 0 18px 40px -18px rgba(0,0,0,0.8);
+    --shadow-lift: 0 8px 18px rgba(0,0,0,0.5), 0 40px 80px -30px rgba(0,0,0,0.9);
+    --glass: rgba(23,19,16,0.66);
+    --grid-line: rgba(255,255,255,0.045);
+    color-scheme: dark;
+  }
+
+  /* ================= BASE ================= */
+  *{ box-sizing:border-box; }
+
+  html{ scrollbar-color:var(--accent) transparent; scroll-behavior:smooth; }
+
+  html,body{
+    margin:0; padding:0;
+    color:var(--text);
+    font-family:'Manrope', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    overflow-x:hidden;
+    -webkit-tap-highlight-color:transparent;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  body{
+    display:flex;
+    justify-content:center;
+    min-height:100vh;
+    background:var(--bg);
+    transition:background-color .5s ease;
+  }
+
+  ::selection{ background:var(--accent); color:var(--on-accent); }
+  ::-webkit-scrollbar{ width:10px; height:10px; }
+  ::-webkit-scrollbar-track{ background:transparent; }
+  ::-webkit-scrollbar-thumb{
+    background:linear-gradient(var(--accent), var(--accent-2));
+    border-radius:8px;
+  }
+
+  main{
+    position:relative;
+    z-index:2;
+    width:100%;
+    max-width:680px;
+    padding:0 20px 90px;
+  }
+
+  a{ color:inherit; text-decoration:none; }
+  button{ font-family:inherit; }
+
+  h1,h2,h3{
+    font-family:'Unbounded', system-ui, sans-serif;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+
+  /* ================= FONDO ÉPICO (optimizado) ================= */
+  .aurora{
+    position:fixed;
+    inset:-25%;
+    z-index:-3;
+    pointer-events:none;
+    filter:blur(80px);
+    opacity:.7;
+    contain:strict;
+  }
+  .aurora i{
+    position:absolute;
+    display:block;
+    border-radius:50%;
+    will-change:transform;
+    transform:translateZ(0);
+  }
+  .aurora i:nth-child(1){
+    width:48vw; height:48vw; min-width:340px; min-height:340px;
+    top:-6%; left:-8%;
+    background:var(--accent);
+    opacity:.30;
+    animation:drift1 24s ease-in-out infinite;
+  }
+  .aurora i:nth-child(2){
+    width:42vw; height:42vw; min-width:300px; min-height:300px;
+    top:22%; right:-12%;
+    background:var(--accent-2);
+    opacity:.24;
+    animation:drift2 28s ease-in-out infinite;
+  }
+  .aurora i:nth-child(3){
+    width:38vw; height:38vw; min-width:280px; min-height:280px;
+    bottom:-10%; left:26%;
+    background:var(--accent);
+    opacity:.16;
+    animation:drift3 32s ease-in-out infinite;
+  }
+  @keyframes drift1{
+    0%,100%{ transform:translate3d(0,0,0) scale(1); }
+    50%{ transform:translate3d(9vw,7vh,0) scale(1.18); }
+  }
+  @keyframes drift2{
+    0%,100%{ transform:translate3d(0,0,0) scale(1.05); }
+    50%{ transform:translate3d(-11vw,10vh,0) scale(.86); }
+  }
+  @keyframes drift3{
+    0%,100%{ transform:translate3d(0,0,0) scale(.95); }
+    50%{ transform:translate3d(7vw,-9vh,0) scale(1.2); }
+  }
+
+  #fx{
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    pointer-events:none;
+    opacity:.85;
+    contain:strict;
+  }
+
+  .grid-overlay{
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    pointer-events:none;
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size:56px 56px;
+    -webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 0%, #000 0%, transparent 78%);
+    mask-image:radial-gradient(ellipse 80% 60% at 50% 0%, #000 0%, transparent 78%);
+    contain:strict;
+  }
+
+  .spotlight{
+    position:fixed;
+    top:0; left:0;
+    width:520px; height:520px;
+    margin:-260px 0 0 -260px;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:1;
+    background:radial-gradient(circle, color-mix(in srgb, var(--accent) 16%, transparent) 0%, transparent 65%);
+    opacity:0;
+    transition:opacity .4s ease;
+    will-change:transform;
+    contain:strict;
+  }
+  .spotlight.on{ opacity:1; }
+
+  /* ================= LOADER ================= */
+  .loader{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--bg);
+    transition:opacity .55s ease, visibility .55s ease;
+  }
+  .loader.done{ opacity:0; visibility:hidden; }
+  .loader-inner{ display:flex; flex-direction:column; align-items:center; gap:18px; }
+  .loader-flame{
+    font-size:44px;
+    display:block;
+    animation:loaderPulse 1s ease-in-out infinite;
+    filter:drop-shadow(0 0 22px color-mix(in srgb, var(--accent) 70%, transparent));
+  }
+  @keyframes loaderPulse{
+    0%,100%{ transform:scale(1) rotate(-4deg); }
+    50%{ transform:scale(1.18) rotate(4deg); }
+  }
+  .loader-bar{
+    width:150px; height:4px;
+    border-radius:99px;
+    background:var(--accent-soft);
+    overflow:hidden;
+  }
+  .loader-bar i{
+    display:block; height:100%; width:40%;
+    border-radius:99px;
+    background:linear-gradient(90deg, var(--accent), var(--accent-2));
+    animation:loaderSlide 1.05s cubic-bezier(.65,0,.35,1) infinite;
+  }
+  @keyframes loaderSlide{
+    0%{ transform:translateX(-110%); }
+    100%{ transform:translateX(300%); }
+  }
+
+  /* ================= CONTROLES (MINIMALISTAS) ================= */
+  .controls-row{
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    gap:8px;
+    padding:22px 2px 0;
+  }
+
+  /* Botón de tema: reducido y minimalista */
+  .theme-toggle{
+    width:38px; height:38px;
+    border-radius:50%;
+    border:1px solid var(--border-strong);
+    background:var(--glass);
+    -webkit-backdrop-filter:blur(12px);
+    backdrop-filter:blur(12px);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+    padding:0;
+    font-size:15px; line-height:1;
+    color:var(--text);
+    transition:transform .18s cubic-bezier(.34,1.56,.64,1), border-color .2s ease, background-color .2s ease;
+  }
+  .theme-toggle:hover{
+    transform:scale(1.08);
+    border-color:var(--accent);
+  }
+  .theme-toggle:active{ transform:scale(.9); }
+  .theme-toggle:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
+
+  #themeIcon{ display:block; transition:transform .4s cubic-bezier(.34,1.56,.64,1); }
+  .theme-toggle:hover #themeIcon{ transform:rotate(20deg); }
+
+  /* ===== SELECTOR DE COLOR MINIMALISTA ===== */
+  .color-picker{ position:relative; }
+
+  /* Botón principal: solo un círculo de color */
+  .color-btn{
+    width:38px; height:38px;
+    border-radius:50%;
+    border:1px solid var(--border-strong);
+    background:var(--glass);
+    -webkit-backdrop-filter:blur(12px);
+    backdrop-filter:blur(12px);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+    padding:0;
+    transition:transform .18s cubic-bezier(.34,1.56,.64,1), border-color .2s ease;
+  }
+  .color-btn:hover{
+    transform:scale(1.08);
+    border-color:var(--accent);
+  }
+  .color-btn:active{ transform:scale(.9); }
+  .color-btn:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
+
+  .color-btn-dot{
+    width:18px; height:18px; border-radius:50%;
+    background:linear-gradient(135deg, var(--accent), var(--accent-2));
+    box-shadow:0 0 10px color-mix(in srgb, var(--accent) 60%, transparent);
+  }
+
+  /* Popover minimalista: fila horizontal compacta */
+  .color-popover{
+    position:absolute; top:calc(100% + 8px); right:0;
+    display:flex; align-items:center; gap:8px;
+    padding:8px 10px;
+    background:var(--glass);
+    -webkit-backdrop-filter:blur(18px);
+    backdrop-filter:blur(18px);
+    border:1px solid var(--border-strong);
+    border-radius:999px;
+    box-shadow:var(--shadow-lift);
+    opacity:0;
+    transform:translateY(-6px) scale(.92);
+    pointer-events:none;
+    transform-origin:top right;
+    transition:opacity .18s ease, transform .18s cubic-bezier(.34,1.56,.64,1);
+    z-index:40;
+  }
+  .color-popover[data-open="true"]{
+    opacity:1;
+    transform:translateY(0) scale(1);
+    pointer-events:auto;
+  }
+
+  /* Puntos de color minimalistas */
+  .swatch{
+    width:20px; height:20px; border-radius:50%;
+    border:none;
+    cursor:pointer; padding:0;
+    transition:transform .15s cubic-bezier(.34,1.56,.64,1), box-shadow .15s ease;
+    box-shadow:0 0 0 1px color-mix(in srgb, var(--text) 12%, transparent);
+  }
+  .swatch:hover{ transform:scale(1.25); }
+  .swatch:active{ transform:scale(.85); }
+  .swatch:focus-visible{ outline:2px solid var(--text); outline-offset:2px; }
+  .swatch[data-active="true"]{
+    transform:scale(1.15);
+    box-shadow:0 0 0 2px var(--surface), 0 0 0 3px currentColor;
+  }
+
+  .swatch[data-color="naranja"]{ background:#E8620C; color:#E8620C; }
+  .swatch[data-color="azul"]{ background:#2159D9; color:#2159D9; }
+  .swatch[data-color="rojo"]{ background:#DC2F2F; color:#DC2F2F; }
+  .swatch[data-color="verde"]{ background:#188A4C; color:#188A4C; }
+  .swatch[data-color="amarillo"]{ background:#E4B400; color:#E4B400; }
+  .swatch[data-color="rosado"]{ background:#E8368F; color:#E8368F; }
+
+  /* ================= HERO ================= */
+  .hero{
+    position:relative;
+    padding:34px 4px 0;
+    cursor:pointer;
+    user-select:none;
+  }
+
+  .hero::before{
+    content:"";
+    position:absolute;
+    top:-70px; left:-60px;
+    width:300px; height:300px;
+    border-radius:50%;
+    background:radial-gradient(circle, color-mix(in srgb, var(--accent) 30%, transparent) 0%, transparent 68%);
+    z-index:-1;
+    animation:heroHalo 8s ease-in-out infinite;
+  }
+  @keyframes heroHalo{
+    0%,100%{ transform:scale(1); opacity:.8; }
+    50%{ transform:scale(1.14); opacity:1; }
+  }
+
+  .hero-inner{
+    opacity:0;
+    transform:translateY(16px);
+    animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero-inner.loaded{ animation:none; opacity:1; transform:none; }
+  .hero-inner.loaded.pulse{ animation:heroElegant .6s cubic-bezier(.22,1,.36,1); }
+
+  @keyframes heroElegant{
+    0%{ transform:translateY(0) scale(1); }
+    40%{ transform:translateY(-6px) scale(1.022); }
+    100%{ transform:translateY(0) scale(1); }
+  }
+  @keyframes rise{ to{ opacity:1; transform:translateY(0); } }
+
+  .hero h1{
+    font-size:clamp(42px, 11.5vw, 76px);
+    font-weight:900;
+    color:var(--text);
+    line-height:1;
+    letter-spacing:-0.035em;
+  }
+
+  .hero h1 .top{
+    position:relative;
+    display:inline-block;
+    background-image:linear-gradient(100deg, var(--accent), var(--accent-2), var(--accent), var(--accent-2));
+    background-size:300% 100%;
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    animation:shimmer 6s linear infinite;
+    filter:drop-shadow(0 0 22px color-mix(in srgb, var(--accent) 45%, transparent));
+  }
+  @keyframes shimmer{ to{ background-position:-300% 0; } }
+
+  .hero p{
+    margin:16px 0 0;
+    color:var(--text-muted);
+    font-size:16px;
+    font-weight:600;
+    max-width:40ch;
+    min-height:1.5em;
+    transition:color .2s ease;
+  }
+  .hero p .caret{
+    display:inline-block;
+    width:2px;
+    height:1em;
+    margin-left:2px;
+    background:var(--accent);
+    vertical-align:-0.12em;
+    animation:blink 1s steps(2) infinite;
+  }
+  @keyframes blink{ 50%{ opacity:0; } }
+
+  .hero-bar{
+    height:5px; border-radius:99px;
+    background:linear-gradient(90deg, var(--accent), var(--accent-2));
+    margin-top:22px;
+    width:54px;
+    animation:growBar .9s cubic-bezier(.2,.8,.2,1) .3s both;
+    transition:box-shadow .3s ease;
+    box-shadow:0 0 18px color-mix(in srgb, var(--accent) 55%, transparent);
+  }
+  @keyframes growBar{ from{ width:0; opacity:0; } to{ width:54px; opacity:1; } }
+
+  /* ================= SECCIONES ================= */
+  .sections-grid{ display:block; margin-top:28px; }
+
+  section.group{
+    position:relative;
+    margin-top:28px;
+    padding:26px 18px 22px;
+    background:color-mix(in srgb, var(--panel) 98%, var(--accent) 2%);
+    border:1px solid var(--border-strong);
+    border-radius:28px;
+    box-shadow:var(--shadow);
+    opacity:0;
+    transform:translateY(26px);
+    transition:opacity .55s cubic-bezier(.2,.7,.2,1), transform .55s cubic-bezier(.2,.7,.2,1);
+    contain:content;
+  }
+
+  .sections-grid > section.group:first-child{ margin-top:0; }
+
+  section.group.in{ opacity:1; transform:none; }
+
+  section.group::before{
+    content:"";
+    position:absolute; top:0; left:22px; right:22px; height:3px;
+    border-radius:0 0 99px 99px;
+    background:linear-gradient(90deg, var(--accent), var(--accent-2));
+    opacity:.9;
+    box-shadow:0 0 18px color-mix(in srgb, var(--accent) 60%, transparent);
+  }
+
+  section.group::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:28px;
+    pointer-events:none;
+    background:radial-gradient(420px circle at var(--gx,50%) var(--gy,0%), color-mix(in srgb, var(--accent) 10%, transparent), transparent 62%);
+    opacity:0;
+    transition:opacity .35s ease;
+    will-change:opacity;
+  }
+  section.group:hover::after{ opacity:1; }
+
+  .group-title{
+    position:relative;
+    display:flex; align-items:center; gap:12px;
+    margin:0 2px 18px;
+  }
+
+  .group-title .badge{
+    width:42px; height:42px; border-radius:14px;
+    background:var(--accent-soft);
+    border:1px solid var(--border-strong);
+    display:flex; align-items:center; justify-content:center;
+    font-size:20px; flex-shrink:0;
+    transition:transform .35s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease;
+    box-shadow:0 0 0 0 color-mix(in srgb, var(--accent) 40%, transparent);
+  }
+  section.group:hover .badge{
+    transform:rotate(-8deg) scale(1.1);
+    box-shadow:0 0 22px color-mix(in srgb, var(--accent) 55%, transparent);
+  }
+
+  .group-title h2{
+    font-size:20px; font-weight:800; color:var(--text);
+    flex:1;
+    letter-spacing:-0.02em;
+  }
+
+  /* ================= TARJETAS ================= */
+  .card{
+    position:relative;
+    background:color-mix(in srgb, var(--surface) 92%, transparent);
+    border:1px solid var(--border-strong);
+    border-radius:20px;
+    overflow:hidden;
+    transition:transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s ease, border-color .3s ease;
+    transform-style:preserve-3d;
+    backface-visibility:hidden;
+  }
+
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]) .card{
+      background:linear-gradient(150deg, rgba(0,0,0,.92) 0%, color-mix(in srgb, rgba(0,0,0,.92) 86%, var(--accent) 14%) 100%);
+    }
+  }
+  :root[data-theme="dark"] .card{
+    background:linear-gradient(150deg, rgba(0,0,0,.92) 0%, color-mix(in srgb, rgba(0,0,0,.92) 86%, var(--accent) 14%) 100%);
+  }
+
+  .card > *{ position:relative; z-index:1; }
+
+  .card::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+    background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%), color-mix(in srgb, var(--accent) 20%, transparent), transparent 70%);
+    opacity:0;
+    transition:opacity .3s ease;
+    will-change:opacity;
+  }
+  .card:hover::after{ opacity:1; }
+  .card:hover{
+    border-color:var(--accent);
+    box-shadow:0 0 0 1px color-mix(in srgb, var(--accent) 30%, transparent), var(--shadow-lift);
+  }
+
+  /* ================= FILAS ================= */
+  .row{
+    position:relative;
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    min-height:56px;
+    padding:15px 18px;
+    border-bottom:1px solid var(--border-strong);
+    transition:background-color .2s ease, padding-left .25s cubic-bezier(.2,.7,.2,1);
+    overflow:hidden;
+  }
+  .row:last-child{ border-bottom:none; }
+
+  .row::before{
+    content:"";
+    position:absolute;
+    left:0; top:0; bottom:0;
+    width:3px;
+    background:linear-gradient(180deg, var(--accent), var(--accent-2));
+    transform:scaleY(0);
+    transform-origin:center;
+    transition:transform .3s cubic-bezier(.2,.7,.2,1);
+  }
+  a.row:hover::before, a.row:focus-visible::before{ transform:scaleY(1); }
+
+  a.row:hover, a.row:focus-visible{
+    background:color-mix(in srgb, var(--accent-soft) 70%, transparent);
+    padding-left:24px;
+  }
+  a.row:focus-visible{ outline:2px solid var(--accent); outline-offset:-3px; }
+
+  .row-name{
+    font-size:16px; font-weight:700;
+    display:inline-block;
+    transition:color .2s ease;
+  }
+  a.row:hover .row-name{ color:var(--accent-2); }
+
+  .row-arrow{
+    flex-shrink:0;
+    font-size:14px;
+    font-weight:800;
+    color:var(--accent);
+    opacity:0;
+    transform:translate(-8px,8px);
+    transition:opacity .25s ease, transform .3s cubic-bezier(.34,1.56,.64,1);
+  }
+  a.row:hover .row-arrow,
+  a.row:focus-visible .row-arrow{ opacity:1; transform:translate(0,0); }
+
+  /* ================= SUB-ESPACIO ANIDADO ================= */
+  .nested{
+    margin:14px 0 0;
+    padding:16px 16px 18px;
+    background:color-mix(in srgb, var(--accent-soft) 20%, transparent);
+    border:1px solid var(--border-strong);
+    border-radius:22px;
+    position:relative;
+    contain:content;
+  }
+
+  .nested-header{
+    display:flex; align-items:center; gap:9px;
+    font-size:13px; font-weight:800;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--accent-2);
+    margin:0 4px 13px;
+  }
+  .nested-header::before{
+    content:"";
+    width:8px; height:8px; border-radius:50%;
+    background:var(--accent);
+    flex-shrink:0;
+    box-shadow:0 0 10px color-mix(in srgb, var(--accent) 80%, transparent);
+  }
+
+  .nested .card{ border-radius:16px; }
+  .nested .row{ padding:13px 15px; }
+
+  /* ================= BOTÓN COPIAR ================= */
+  .copy-block{ padding:10px; }
+
+  .copy-btn{
+    position:relative;
+    width:100%;
+    display:flex; align-items:center; justify-content:center; gap:9px;
+    padding:15px 16px;
+    background:linear-gradient(135deg, var(--accent), var(--accent-2));
+    color:var(--on-accent);
+    font-size:14.5px; font-weight:800;
+    letter-spacing:.02em;
+    border:none; border-radius:14px;
+    cursor:pointer;
+    overflow:hidden;
+    box-shadow:0 6px 20px -6px color-mix(in srgb, var(--accent) 70%, transparent);
+    transition:transform .14s ease, box-shadow .25s ease, filter .25s ease;
+  }
+  .copy-btn::after{
+    content:"";
+    position:absolute;
+    top:0; left:-120%;
+    width:60%; height:100%;
+    background:linear-gradient(100deg, transparent, rgba(255,255,255,.42), transparent);
+    transform:skewX(-18deg);
+    transition:left .6s cubic-bezier(.2,.7,.2,1);
+  }
+  .copy-btn:hover::after{ left:130%; }
+  .copy-btn:hover{
+    filter:brightness(1.08);
+    box-shadow:0 10px 30px -8px color-mix(in srgb, var(--accent) 85%, transparent);
+  }
+  .copy-btn:active{ transform:scale(.965); }
+  .copy-btn:focus-visible{ outline:2px solid var(--text); outline-offset:3px; }
+  .copy-btn[data-copied="true"]{
+    background:linear-gradient(135deg, #3E8F5B, #2C7247);
+    color:#F4FFF8;
+    box-shadow:0 10px 30px -8px rgba(62,143,91,.7);
+  }
+
+  /* ================= PIE ================= */
+  footer{ margin-top:56px; display:flex; justify-content:center; }
+
+  .footer-card{
+    cursor:pointer;
+    opacity:0;
+    transform:translateY(20px);
+    transition:opacity .7s cubic-bezier(.2,.7,.2,1) .2s, transform .7s cubic-bezier(.2,.7,.2,1) .2s;
+  }
+  .footer-card.in{ opacity:1; transform:none; }
+
+  .footer-inner{
+    position:relative;
+    display:inline-flex; flex-direction:column; align-items:center; gap:12px;
+    padding:28px 44px;
+    border-radius:26px;
+    background:color-mix(in srgb, var(--panel) 98%, var(--accent) 2%);
+    border:1px solid var(--border-strong);
+    box-shadow:var(--shadow);
+    overflow:hidden;
+    transition:box-shadow .3s ease, border-color .3s ease, transform .3s ease;
+  }
+  .footer-card:hover .footer-inner{
+    border-color:var(--accent);
+    box-shadow:0 0 0 1px color-mix(in srgb, var(--accent) 30%, transparent), var(--shadow-lift);
+    transform:translateY(-3px);
+  }
+
+  .footer-inner.loaded.pulse{ animation:clickPulse .65s cubic-bezier(.34,1.56,.64,1); }
+  @keyframes clickPulse{
+    0%{ transform:scale(1) rotate(0deg); }
+    22%{ transform:scale(1.09) rotate(-2.5deg); }
+    46%{ transform:scale(.94) rotate(2.5deg); }
+    70%{ transform:scale(1.035) rotate(-1deg); }
+    100%{ transform:scale(1) rotate(0deg); }
+  }
+
+  .footer-flame-wrap{
+    position:relative;
+    width:58px; height:58px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .footer-flame-wrap::before{
+    content:"";
+    position:absolute; inset:0;
+    border-radius:50%;
+    background:radial-gradient(circle, color-mix(in srgb, var(--accent) 32%, transparent) 0%, transparent 70%);
+    animation:heroHalo 3.6s ease-in-out infinite;
+  }
+
+  .footer-flame{
+    position:relative; z-index:1;
+    font-size:27px;
+    display:inline-block;
+    animation:bounce 2.2s ease-in-out infinite;
+    filter:drop-shadow(0 0 16px color-mix(in srgb, var(--accent) 60%, transparent));
+  }
+  @keyframes bounce{
+    0%,100%{ transform:translateY(0) scale(1); }
+    50%{ transform:translateY(-8px) scale(1.1); }
+  }
+
+  .footer-flame.burst{ animation:flameBurst .7s cubic-bezier(.34,1.56,.64,1); }
+  @keyframes flameBurst{
+    0%{ transform:scale(1) rotate(0deg); }
+    45%{ transform:scale(1.5) rotate(200deg); }
+    75%{ transform:scale(.86) rotate(380deg); }
+    100%{ transform:scale(1) rotate(360deg); }
+  }
+
+  footer .by{
+    font-family:'Unbounded', sans-serif;
+    font-size:17px; font-weight:800;
+    background-image:linear-gradient(100deg, var(--accent), var(--accent-2), var(--accent));
+    background-size:250% 100%;
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    animation:shimmer 5s linear infinite;
+  }
+
+  .footer-bar{
+    width:40px; height:3px; border-radius:2px;
+    background:linear-gradient(90deg, var(--accent), var(--accent-2));
+    box-shadow:0 0 12px color-mix(in srgb, var(--accent) 60%, transparent);
+  }
+
+  /* ================= VOLVER ARRIBA ================= */
+  .back-to-top{
+    position:fixed;
+    bottom:22px; right:22px;
+    width:50px; height:50px;
+    border-radius:50%;
+    border:1.5px solid var(--border-strong);
+    background:linear-gradient(135deg, var(--accent), var(--accent-2));
+    color:var(--on-accent);
+    font-size:19px; font-weight:800;
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+    box-shadow:0 10px 30px -8px color-mix(in srgb, var(--accent) 80%, transparent);
+    opacity:0;
+    transform:translateY(14px) scale(.85);
+    pointer-events:none;
+    transition:opacity .3s ease, transform .3s cubic-bezier(.34,1.56,.64,1);
+    z-index:50;
+  }
+  .back-to-top[data-visible="true"]{
+    opacity:1;
+    transform:translateY(0) scale(1);
+    pointer-events:auto;
+  }
+  .back-to-top:hover{ transform:translateY(-3px) scale(1.08); }
+  .back-to-top[data-visible="true"]:active{ transform:scale(.88); }
+  .back-to-top:focus-visible{ outline:2px solid var(--text); outline-offset:3px; }
+
+  /* ================= MOVIMIENTO REDUCIDO ================= */
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .hero-inner, .footer-card, section.group{ animation:none; opacity:1; transform:none; transition:none; }
+    .hero::before, .footer-flame, footer .by, .hero h1 .top,
+    .footer-flame-wrap::before, .hero-bar, .aurora i,
+    .loader-flame, .loader-bar i, .nested-header::before{ animation:none !important; }
+    .hero-bar{ width:54px; }
+    *{ transition-duration:.001ms !important; animation-duration:.001ms !important; }
+    #fx{ display:none; }
+    .spotlight{ display:none; }
+  }
+
+  /* ================= ESCRITORIO / TABLET ================= */
+  @media (hover:hover) and (pointer:fine){
+    .card .row{ cursor:pointer; }
+  }
+
+  @media (min-width:600px){
+    main{ max-width:700px; padding:0 28px 100px; }
+    section.group{ padding:30px 22px 24px; }
+    .row{ padding:16px 20px; }
+    .nested{ padding:18px 18px 20px; }
+  }
+
+  @media (min-width:900px){
+    main{ max-width:980px; padding:0 34px 110px; }
+    .sections-grid{
+      display:flex;
+      align-items:flex-start;
+      gap:26px;
+      margin-top:26px;
+    }
+    .sections-col{
+      flex:1 1 0;
+      min-width:0;
+      display:flex;
+      flex-direction:column;
+      gap:26px;
+    }
+    .sections-col > section.group{ margin:0; }
+    footer{ margin-top:70px; }
+  }
+
+  @media (min-width:1240px){
+    main{ max-width:1200px; padding:0 44px 120px; }
+    .sections-grid{ gap:30px; margin-top:30px; }
+    .sections-col{ gap:30px; }
+    footer{ margin-top:80px; }
+  }
+
+  /* ================= MÓVIL ================= */
+  @media (max-width:599px){
+    main{ padding:0 16px 96px; }
+    .hero{ padding:26px 2px 0; }
+    .hero p{ max-width:32ch; }
+    .sections-grid{ margin-top:24px; }
+    section.group{ margin-top:24px; padding:24px 16px 20px; border-radius:24px; }
+    section.group::before{ left:16px; right:16px; }
+    section.group::after{ border-radius:24px; }
+    .nested{ padding:14px 13px 16px; }
+    .nested .row{ padding:14px 13px; }
+    footer{ margin-top:44px; }
+    .footer-inner{ padding:24px 34px; }
+    .back-to-top{ bottom:16px; right:16px; width:48px; height:48px; }
+  }
+
+  /* ================= PANTALLAS MUY PEQUEÑAS ================= */
+  @media (max-width:380px){
+    main{ padding:0 12px 90px; }
+    .row-name{ font-size:15px; }
+    .row{ padding:14px 14px; }
+    section.group{ padding:22px 13px 18px; border-radius:22px; }
+    .group-title h2{ font-size:18px; }
+    .group-title .badge{ width:36px; height:36px; font-size:17px; border-radius:12px; }
+    .theme-toggle, .color-btn{ width:36px; height:36px; }
+    .color-btn-dot{ width:16px; height:16px; }
+  }
+
+  /* ================= CANVA PRO - INTERFAZ DESPLEGABLE ================= */
+  .canva-trigger-row{
+    border-bottom:none !important;
+  }
+
+  .canva-trigger-btn{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    background:transparent;
+    border:none;
+    padding:0;
+    cursor:pointer;
+    color:var(--text);
+    font-family:inherit;
+    text-align:left;
+  }
+
+  .canva-trigger-btn .row-name{
+    font-size:16px;
+    font-weight:700;
+    display:inline-block;
+    transition:color .2s ease;
+  }
+
+  .canva-trigger-btn:hover .row-name{
+    color:var(--accent-2);
+  }
+
+  .canva-chevron{
+    flex-shrink:0;
+    font-size:14px;
+    font-weight:800;
+    color:var(--accent);
+    transition:transform .35s cubic-bezier(.34,1.56,.64,1);
+  }
+
+  .canva-trigger-btn[aria-expanded="true"] .canva-chevron{
+    transform:rotate(180deg);
+  }
+
+  .canva-panel{
+    max-height:0;
+    opacity:0;
+    overflow:hidden;
+    transition:max-height .55s cubic-bezier(.2,.7,.2,1), opacity .4s ease, margin .35s ease;
+    margin-top:0;
+    border-radius:20px;
+    border:1px solid transparent;
+    background:transparent;
+    will-change:max-height, opacity;
+  }
+
+  .canva-panel[data-open="true"]{
+    opacity:1;
+    border-color:var(--border-strong);
+    margin-top:16px;
+    background:color-mix(in srgb, var(--accent-soft) 18%, transparent);
+  }
+
+  .canva-panel-inner{
+    padding:20px 18px 22px;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+  }
+
+  .canva-title{
+    font-family:'Unbounded', sans-serif;
+    font-size:15px;
+    font-weight:800;
+    letter-spacing:-0.01em;
+    color:var(--accent-2);
+    margin:0;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+
+  .canva-title .mini-flame{
+    font-size:18px;
+  }
+
+  .canva-steps{
+    display:flex;
+    flex-direction:column;
+    gap:13px;
+  }
+
+  .canva-step{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:14px 16px;
+    border-radius:16px;
+    background:color-mix(in srgb, var(--surface) 90%, transparent);
+    border:1px solid var(--border-strong);
+    transition:border-color .25s ease, box-shadow .3s ease, transform .25s ease;
+  }
+
+  .canva-step:hover{
+    border-color:var(--accent);
+    box-shadow:0 0 0 1px color-mix(in srgb, var(--accent) 22%, transparent);
+    transform:translateY(-1px);
+  }
+
+  .canva-step.canva-step-prompt{
+    padding:0;
+    background:transparent;
+    border:none;
+    box-shadow:none;
+  }
+
+  .canva-step.canva-step-prompt:hover{
+    transform:none;
+    box-shadow:none;
+  }
+
+  .canva-step-num{
+    flex-shrink:0;
+    width:26px;
+    height:26px;
+    border-radius:50%;
+    background:linear-gradient(135deg, var(--accent), var(--accent-2));
+    color:var(--on-accent);
+    font-size:12px;
+    font-weight:900;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 0 14px color-mix(in srgb, var(--accent) 50%, transparent);
+  }
+
+  .canva-step-text{
+    font-size:14.5px;
+    font-weight:700;
+    color:var(--text);
+    line-height:1.45;
+    flex:1;
+  }
+
+  .canva-link-btn{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    flex:1;
+    text-decoration:none;
+    color:var(--text);
+    font-size:14.5px;
+    font-weight:700;
+    line-height:1.45;
+    padding:2px 0;
+    border-radius:8px;
+    transition:color .2s ease, transform .2s ease;
+    position:relative;
+    cursor:pointer;
+  }
+
+  .canva-link-btn::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-1px;
+    width:100%;
+    height:1.5px;
+    background:linear-gradient(90deg, var(--accent), var(--accent-2));
+    transform:scaleX(0);
+    transform-origin:left center;
+    transition:transform .3s cubic-bezier(.2,.7,.2,1);
+  }
+
+  .canva-link-btn:hover,
+  .canva-link-btn:focus-visible{
+    color:var(--accent-2);
+    outline:none;
+  }
+
+  .canva-link-btn:hover::after,
+  .canva-link-btn:focus-visible::after{
+    transform:scaleX(1);
+  }
+
+  .canva-link-btn:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:3px;
+  }
+
+  .canva-link-btn .link-text{
+    flex:1;
+    min-width:0;
+  }
+
+  .canva-link-btn .link-icon{
+    flex-shrink:0;
+    width:30px;
+    height:30px;
+    border-radius:10px;
+    background:linear-gradient(135deg, var(--accent), var(--accent-2));
+    color:var(--on-accent);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:14px;
+    font-weight:900;
+    box-shadow:0 4px 14px -4px color-mix(in srgb, var(--accent) 75%, transparent);
+    transition:transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease;
+  }
+
+  .canva-link-btn:hover .link-icon,
+  .canva-link-btn:focus-visible .link-icon{
+    transform:translate(2px, -2px) scale(1.06);
+    box-shadow:0 6px 18px -4px color-mix(in srgb, var(--accent) 90%, transparent);
+  }
+
+  .canva-prompt-btn{
+    position:relative;
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+    padding:15px 16px;
+    background:linear-gradient(135deg, var(--accent), var(--accent-2));
+    color:var(--on-accent);
+    font-size:14.5px;
+    font-weight:800;
+    letter-spacing:.02em;
+    border:none;
+    border-radius:14px;
+    cursor:pointer;
+    overflow:hidden;
+    box-shadow:0 6px 20px -6px color-mix(in srgb, var(--accent) 70%, transparent);
+    transition:transform .14s ease, box-shadow .25s ease, filter .25s ease;
+  }
+
+  .canva-prompt-btn::after{
+    content:"";
+    position:absolute;
+    top:0; left:-120%;
+    width:60%; height:100%;
+    background:linear-gradient(100deg, transparent, rgba(255,255,255,.42), transparent);
+    transform:skewX(-18deg);
+    transition:left .6s cubic-bezier(.2,.7,.2,1);
+  }
+  .canva-prompt-btn:hover::after{ left:130%; }
+  .canva-prompt-btn:hover{
+    filter:brightness(1.08);
+    box-shadow:0 10px 30px -8px color-mix(in srgb, var(--accent) 85%, transparent);
+  }
+  .canva-prompt-btn:active{ transform:scale(.965); }
+  .canva-prompt-btn:focus-visible{ outline:2px solid var(--text); outline-offset:3px; }
+  .canva-prompt-btn[data-copied="true"]{
+    background:linear-gradient(135deg, #3E8F5B, #2C7247);
+    color:#F4FFF8;
+    box-shadow:0 10px 30px -8px rgba(62,143,91,.7);
+  }
+
+  .canva-prompt-btn .prompt-icon{
+    font-size:16px;
+  }
+
+  .canva-divider{
+    height:1px;
+    background:linear-gradient(90deg, transparent, var(--border-strong) 20%, var(--border-strong) 80%, transparent);
+    opacity:.7;
+    margin:2px 0;
+  }
+
+  /* ================= CANVA PRO - SUBDESPLEGABLE ================= */
+  .canva-subpanel{
+    max-height:0;
+    opacity:0;
+    overflow:hidden;
+    transition:max-height .45s cubic-bezier(.2,.7,.2,1), opacity .3s ease, margin .3s ease;
+    margin-top:0;
+    border-radius:14px;
+    will-change:max-height, opacity;
+  }
+
+  .canva-subpanel[data-open="true"]{
+    opacity:1;
+    margin-top:10px;
+  }
+
+  .canva-subpanel-inner{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    padding:10px;
+    border-radius:14px;
+    background:color-mix(in srgb, var(--surface) 80%, transparent);
+    border:1px solid var(--border-strong);
+  }
+
+  .canva-subtrigger{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    padding:12px 14px;
+    border-radius:14px;
+    background:color-mix(in srgb, var(--surface) 90%, transparent);
+    border:1px dashed var(--border-strong);
+    cursor:pointer;
+    color:var(--accent-2);
+    font-family:inherit;
+    font-size:13.5px;
+    font-weight:800;
+    letter-spacing:.02em;
+    transition:border-color .25s ease, background-color .25s ease, transform .25s ease;
+  }
+
+  .canva-subtrigger:hover{
+    border-color:var(--accent);
+    background:color-mix(in srgb, var(--accent-soft) 50%, transparent);
+    transform:translateY(-1px);
+  }
+
+  .canva-subtrigger:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:2px;
+  }
+
+  .canva-subtrigger .canva-subtrigger-label{
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+
+  .canva-subtrigger .canva-subtrigger-label .dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:var(--accent);
+    box-shadow:0 0 10px color-mix(in srgb, var(--accent) 80%, transparent);
+    flex-shrink:0;
+  }
+
+  .canva-subtrigger .canva-subtrigger-chevron{
+    flex-shrink:0;
+    font-size:12px;
+    font-weight:900;
+    color:var(--accent);
+    transition:transform .35s cubic-bezier(.34,1.56,.64,1);
+  }
+
+  .canva-subtrigger[aria-expanded="true"] .canva-subtrigger-chevron{
+    transform:rotate(180deg);
+  }
+
+  .canva-substep{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:10px 12px;
+    border-radius:12px;
+    background:color-mix(in srgb, var(--surface) 85%, transparent);
+    border:1px solid var(--border-strong);
+    transition:border-color .2s ease, transform .2s ease;
+  }
+
+  .canva-substep:hover{
+    border-color:var(--accent);
+    transform:translateY(-1px);
+  }
+
+  .canva-substep-num{
+    flex-shrink:0;
+    width:22px;
+    height:22px;
+    border-radius:50%;
+    background:linear-gradient(135deg, var(--accent), var(--accent-2));
+    color:var(--on-accent);
+    font-size:11px;
+    font-weight:900;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .canva-substep-text{
+    font-size:13.5px;
+    font-weight:700;
+    color:var(--text);
+    line-height:1.4;
+    flex:1;
+    min-width:0;
+  }
+
+  /* ================= HUNGRY HEART - SECCIÓN NORMAL ================= */
+  .hh-list{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+
+  .hh-item{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:14px 16px;
+    border-radius:16px;
+    background:color-mix(in srgb, var(--surface) 90%, transparent);
+    border:1px solid var(--border-strong);
+    transition:border-color .25s ease, box-shadow .3s ease, transform .25s ease;
+  }
+
+  .hh-item:hover{
+    border-color:var(--accent);
+    box-shadow:0 0 0 1px color-mix(in srgb, var(--accent) 20%, transparent);
+    transform:translateY(-1px);
+  }
+
+  .hh-lang{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:15px;
+    font-weight:800;
+    color:var(--text);
+    letter-spacing:-0.01em;
+    flex:1;
+    min-width:0;
+  }
+
+  .hh-lang .hh-flag{
+    font-size:18px;
+    line-height:1;
+  }
+
+  .hh-actions{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex-shrink:0;
+  }
+
+  .hh-link{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:5px;
+    padding:9px 14px;
+    border-radius:10px;
+    background:linear-gradient(135deg, var(--accent), var(--accent-2));
+    color:var(--on-accent);
+    font-size:12.5px;
+    font-weight:800;
+    letter-spacing:.02em;
+    text-decoration:none;
+    box-shadow:0 4px 14px -4px color-mix(in srgb, var(--accent) 70%, transparent);
+    transition:transform .2s cubic-bezier(.34,1.56,.64,1), box-shadow .25s ease, filter .25s ease;
+    border:none;
+    cursor:pointer;
+  }
+
+  .hh-link:hover{
+    filter:brightness(1.08);
+    box-shadow:0 6px 20px -4px color-mix(in srgb, var(--accent) 85%, transparent);
+    transform:translateY(-1px);
+  }
+
+  .hh-link:active{ transform:scale(.95); }
+  .hh-link:focus-visible{ outline:2px solid var(--text); outline-offset:3px; }
+
+  .hh-link .hh-icon{
+    font-size:13px;
+    line-height:1;
+  }
+
+  .hh-pass{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:5px;
+    padding:9px 14px;
+    border-radius:10px;
+    background:var(--accent-soft);
+    color:var(--accent-2);
+    font-size:12.5px;
+    font-weight:800;
+    letter-spacing:.02em;
+    border:1px solid var(--border-strong);
+    cursor:pointer;
+    overflow:hidden;
+    transition:transform .2s cubic-bezier(.34,1.56,.64,1), border-color .25s ease, box-shadow .25s ease, background-color .25s ease;
+    min-width:100px;
+  }
+
+  .hh-pass:hover{
+    border-color:var(--accent);
+    box-shadow:0 0 0 1px color-mix(in srgb, var(--accent) 25%, transparent);
+    transform:translateY(-1px);
+  }
+
+  .hh-pass:active{ transform:scale(.95); }
+  .hh-pass:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
+
+  .hh-pass .hh-pass-label,
+  .hh-pass .hh-pass-status{
+    display:block;
+    transition:opacity .22s ease, transform .22s ease;
+  }
+
+  .hh-pass .hh-pass-status{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg, #3E8F5B, #2C7247);
+    color:#F4FFF8;
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:.04em;
+    opacity:0;
+    transform:scale(.9);
+    pointer-events:none;
+  }
+
+  .hh-pass[data-copied="true"] .hh-pass-label{
+    opacity:0;
+    transform:scale(.85);
+  }
+
+  .hh-pass[data-copied="true"] .hh-pass-status{
+    opacity:1;
+    transform:scale(1);
+  }
+
+  @media (max-width:599px){
+    .hh-item{ padding:12px 14px; gap:10px; }
+    .hh-lang{ font-size:14px; }
+    .hh-link, .hh-pass{ padding:8px 12px; font-size:12px; }
+    .hh-pass{ min-width:90px; }
+  }
+
+  @media (max-width:380px){
+    .hh-item{ flex-direction:column; align-items:stretch; gap:10px; }
+    .hh-actions{ justify-content:flex-end; }
+  }
+
+  /* ================= UTP - SECCIÓN DESPLEGABLE ================= */
+  .utp-list{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+
+  .utp-item{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+    padding:12px 14px;
+    border-radius:14px;
+    background:color-mix(in srgb, var(--surface) 90%, transparent);
+    border:1px solid var(--border-strong);
+    transition:border-color .25s ease, box-shadow .3s ease, transform .25s ease, background-color .2s ease;
+  }
+
+  .utp-item:hover{
+    border-color:var(--accent);
+    box-shadow:0 0 0 1px color-mix(in srgb, var(--accent) 20%, transparent);
+    transform:translateY(-1px);
+  }
+
+  .utp-name-btn{
+    position:relative;
+    flex:1;
+    min-width:0;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:4px 6px;
+    margin:-4px -6px;
+    background:transparent;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    color:var(--text);
+    font-family:inherit;
+    font-size:14.5px;
+    font-weight:800;
+    text-align:left;
+    letter-spacing:-0.01em;
+    line-height:1.3;
+    transition:color .2s ease, background-color .2s ease;
+  }
+
+  .utp-name-btn:hover{
+    color:var(--accent-2);
+    background:color-mix(in srgb, var(--accent-soft) 60%, transparent);
+  }
+
+  .utp-name-btn:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:2px;
+  }
+
+  .utp-name-btn .utp-name-text{
+    flex:1;
+    min-width:0;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    transition:opacity .22s ease, transform .22s ease;
+  }
+
+  .utp-name-btn .utp-name-status{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#3E8F5B;
+    font-size:13px;
+    font-weight:900;
+    letter-spacing:.02em;
+    opacity:0;
+    transform:scale(.85);
+    pointer-events:none;
+  }
+
+  .utp-name-btn[data-copied="true"] .utp-name-text{
+    opacity:0;
+    transform:scale(.9);
+  }
+
+  .utp-name-btn[data-copied="true"] .utp-name-status{
+    opacity:1;
+    transform:scale(1);
+  }
+
+  .utp-actions{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    flex-shrink:0;
+  }
+
+  .utp-link-btn{
+    position:relative;
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:4px;
+    padding:7px 10px;
+    border-radius:9px;
+    background:var(--accent-soft);
+    color:var(--accent-2);
+    font-size:11.5px;
+    font-weight:900;
+    letter-spacing:.04em;
+    border:1px solid var(--border-strong);
+    cursor:pointer;
+    overflow:hidden;
+    transition:transform .2s cubic-bezier(.34,1.56,.64,1), border-color .25s ease, box-shadow .25s ease, background-color .25s ease;
+    min-width:58px;
+  }
+
+  .utp-link-btn:hover{
+    border-color:var(--accent);
+    box-shadow:0 0 0 1px color-mix(in srgb, var(--accent) 25%, transparent);
+    transform:translateY(-1px);
+  }
+
+  .utp-link-btn:active{ transform:scale(.94); }
+  .utp-link-btn:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
+
+  .utp-link-btn .utp-link-label,
+  .utp-link-btn .utp-link-status{
+    display:block;
+    transition:opacity .22s ease, transform .22s ease;
+  }
+
+  .utp-link-btn .utp-link-status{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg, #3E8F5B, #2C7247);
+    color:#F4FFF8;
+    font-size:11.5px;
+    font-weight:900;
+    letter-spacing:.04em;
+    opacity:0;
+    transform:scale(.9);
+    pointer-events:none;
+  }
+
+  .utp-link-btn[data-copied="true"] .utp-link-label{
+    opacity:0;
+    transform:scale(.85);
+  }
+
+  .utp-link-btn[data-copied="true"] .utp-link-status{
+    opacity:1;
+    transform:scale(1);
+  }
+
+  .utp-open-btn{
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:4px;
+    padding:7px 10px;
+    border-radius:9px;
+    background:linear-gradient(135deg, var(--accent), var(--accent-2));
+    color:var(--on-accent);
+    font-size:11.5px;
+    font-weight:900;
+    letter-spacing:.04em;
+    text-decoration:none;
+    border:none;
+    cursor:pointer;
+    box-shadow:0 4px 14px -4px color-mix(in srgb, var(--accent) 70%, transparent);
+    transition:transform .2s cubic-bezier(.34,1.56,.64,1), box-shadow .25s ease, filter .25s ease;
+    min-width:58px;
+  }
+
+  .utp-open-btn:hover{
+    filter:brightness(1.08);
+    box-shadow:0 6px 20px -4px color-mix(in srgb, var(--accent) 85%, transparent);
+    transform:translateY(-1px);
+  }
+
+  .utp-open-btn:active{ transform:scale(.94); }
+  .utp-open-btn:focus-visible{ outline:2px solid var(--text); outline-offset:3px; }
+
+  @media (max-width:599px){
+    .utp-item{ padding:10px 12px; gap:6px; }
+    .utp-name-btn{ font-size:13.5px; }
+    .utp-link-btn, .utp-open-btn{ padding:6px 8px; font-size:11px; min-width:52px; }
+  }
+
+  @media (max-width:380px){
+    .utp-item{ flex-direction:column; align-items:stretch; gap:8px; }
+    .utp-actions{ justify-content:flex-end; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ================= LOADER ================= -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-inner">
+    <span class="loader-flame">🔥</span>
+    <div class="loader-bar"><i></i></div>
+  </div>
+</div>
+
+<!-- ================= FONDO ================= -->
+<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+<canvas id="fx" aria-hidden="true"></canvas>
+<div class="grid-overlay" aria-hidden="true"></div>
+<div class="spotlight" id="spotlight" aria-hidden="true"></div>
+
+<main>
+
+  <div class="controls-row">
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Alternar entre modo claro y oscuro">
+      <span id="themeIcon" aria-hidden="true">🌙</span>
+    </button>
+
+    <div class="color-picker" id="colorPicker">
+      <button class="color-btn" id="colorBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Elegir color">
+        <span class="color-btn-dot" id="colorBtnDot" aria-hidden="true"></span>
+      </button>
+      <div class="color-popover" id="colorPopover" role="menu" data-open="false">
+        <button class="swatch" type="button" data-color="naranja" aria-label="Naranja" title="Naranja"></button>
+        <button class="swatch" type="button" data-color="azul" aria-label="Azul" title="Azul"></button>
+        <button class="swatch" type="button" data-color="rojo" aria-label="Rojo" title="Rojo"></button>
+        <button class="swatch" type="button" data-color="verde" aria-label="Verde" title="Verde"></button>
+        <button class="swatch" type="button" data-color="amarillo" aria-label="Amarillo" title="Amarillo"></button>
+        <button class="swatch" type="button" data-color="rosado" aria-label="Rosado" title="Rosado"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= HERO ================= -->
+  <div class="hero" id="heroEl">
+    <div class="hero-inner" id="heroInner">
+      <h1>Lo más <span class="top">Top</span></h1>
+      <p><span id="typeTarget"></span><span class="caret" aria-hidden="true"></span></p>
+      <div class="hero-bar"></div>
+    </div>
+  </div>
+
+  <!-- ================= SECCIONES ================= -->
+  <div class="sections-grid" id="sectionsGrid">
+
+    <!-- ROOT -->
+    <section class="group" data-reveal>
+      <div class="group-title">
+        <span class="badge">🔐</span>
+        <h2>Root</h2>
+      </div>
+      <div class="card">
+        <a class="row" href="https://github.com/tiann/KernelSU/releases" target="_blank" rel="noopener noreferrer">
+          <span class="row-name">KernelSu</span>
+        </a>
+        <a class="row" href="https://github.com/KernelSU-Next/KernelSU-Next/releases" target="_blank" rel="noopener noreferrer">
+          <span class="row-name">KernelSu Next</span>
+        </a>
+        <a class="row" href="https://github.com/topjohnwu/Magisk/releases" target="_blank" rel="noopener noreferrer">
+          <span class="row-name">Magisk</span>
+        </a>
+        <a class="row" href="https://github.com/bmax121/APatch/releases" target="_blank" rel="noopener noreferrer">
+          <span class="row-name">APatch</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- MÓDULOS -->
+    <section class="group" data-reveal>
+      <div class="group-title">
+        <span class="badge">🧩</span>
+        <h2>Módulos</h2>
+      </div>
+      <div class="card">
+        <a class="row" href="https://github.com/symbuzzer/oled2lcd/releases" target="_blank" rel="noopener noreferrer">
+          <span class="row-name">Oled2Lcd</span>
+        </a>
+        <a class="row" href="https://github.com/PerformanC/ReZygisk/releases" target="_blank" rel="noopener noreferrer">
+          <span class="row-name">ReZigysk</span>
+        </a>
+      </div>
+
+      <div class="nested">
+        <p class="nested-header">Vector (Lsposed)</p>
+        <div class="card">
+          <a class="row" href="https://github.com/JingMatrix/Vector/releases" target="_blank" rel="noopener noreferrer">
+            <span class="row-name">Vector (Lsposed)</span>
+          </a>
+          <a class="row" href="https://github.com/Dev4Mod/WaEnhancer/releases" target="_blank" rel="noopener noreferrer">
+            <span class="row-name">WaEnhacer</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:14px;">
+        <a class="row" href="https://github.com/peternmuller/revanced-morphe-builder/releases" target="_blank" rel="noopener noreferrer">
+          <span class="row-name">YouTube</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- APPS -->
+    <section class="group" data-reveal>
+      <div class="group-title">
+        <span class="badge">📱</span>
+        <h2>Apps</h2>
+      </div>
+      <div class="card">
+        <a class="row" href="https://inshot.mundoperfecto.net/download/" target="_blank" rel="noopener noreferrer">
+          <span class="row-name">InShot</span>
+        </a>
+        <a class="row" href="https://liteapks.com/download/capcut-311" target="_blank" rel="noopener noreferrer">
+          <span class="row-name">CapCut</span>
+        </a>
+        <a class="row" href="https://androforever.com/picsart-premium-apk-android/download/" target="_blank" rel="noopener noreferrer">
+          <span class="row-name">PicsArt</span>
+        </a>
+        <a class="row" href="https://github.com/deniscerri/ytdlnis/releases" target="_blank" rel="noopener noreferrer">
+          <span class="row-name">YTDLnis</span>
+        </a>
+        <a class="row" href="https://liteapks.com/download/nova-launcher-prime-79644" target="_blank" rel="noopener noreferrer">
+          <span class="row-name">Nova Launcher</span>
+        </a>
+        <a class="row" href="https://liteapks.com/download/oto-music-58931" target="_blank" rel="noopener noreferrer">
+          <span class="row-name">OtoMusic</span>
+        </a>
+        <a class="row" href="https://github.com/XayahSuSuSu/Android-DataBackup/releases" target="_blank" rel="noopener noreferrer">
+          <span class="row-name">DataBackup</span>
+        </a>
+
+        <!-- ===== CANVA PRO ===== -->
+        <div class="row canva-trigger-row">
+          <button class="canva-trigger-btn" id="canvaTrigger" type="button" aria-expanded="false" aria-controls="canvaPanel">
+            <span class="row-name">🎨 Canva Pro</span>
+            <span class="canva-chevron" aria-hidden="true">▾</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Panel desplegable Canva Pro -->
+      <div class="canva-panel" id="canvaPanel" data-open="false">
+        <div class="canva-panel-inner">
+          <p class="canva-title"><span class="mini-flame">😁</span> Canva Pro gratis</p>
+
+          <div class="canva-steps">
+
+            <!-- ===== BOTÓN: Copiar prompt ===== -->
+            <div class="canva-step canva-step-prompt">
+              <button class="canva-prompt-btn" id="canvaPromptBtn" type="button" data-copied="false">
+                <span class="prompt-icon">📋</span>
+                <span id="canvaPromptLabel">Copiar prompt</span>
+              </button>
+            </div>
+
+            <!-- ===== PASO 1: IA Qwen ===== -->
+            <div class="canva-step">
+              <span class="canva-step-num">1</span>
+              <a class="canva-link-btn" href="https://chat.qwen.ai/" target="_blank" rel="noopener noreferrer">
+                <span class="link-text">IA Qwen</span>
+                <span class="link-icon" aria-hidden="true">↗</span>
+              </a>
+            </div>
+
+            <!-- ===== PASO 2: Descargar Canva ===== -->
+            <div class="canva-step">
+              <span class="canva-step-num">2</span>
+              <a class="canva-link-btn" href="https://play.google.com/store/apps/details?id=com.canva.editor&pcampaignid=web_share" target="_blank" rel="noopener noreferrer">
+                <span class="link-text">Descargar Canva</span>
+                <span class="link-icon" aria-hidden="true">↗</span>
+              </a>
+            </div>
+
+            <!-- ===== PASO 3: Página Oficial Canva ===== -->
+            <div class="canva-step">
+              <span class="canva-step-num">3</span>
+              <a class="canva-link-btn" href="https://www.canva.com/es_co/educacion/" target="_blank" rel="noopener noreferrer">
+                <span class="link-text">Página Oficial Canva</span>
+                <span class="link-icon" aria-hidden="true">↗</span>
+              </a>
+            </div>
+
+            <!-- ===== SUBDESPLEGABLE: Ver más ===== -->
+            <button class="canva-subtrigger" id="canvaSubTrigger" type="button" aria-expanded="false" aria-controls="canvaSubPanel">
+              <span class="canva-subtrigger-label">
+                <span class="dot" aria-hidden="true"></span>
+                <span id="canvaSubTriggerText">Ver más</span>
+              </span>
+              <span class="canva-subtrigger-chevron" aria-hidden="true">▾</span>
+            </button>
+
+            <div class="canva-subpanel" id="canvaSubPanel" data-open="false">
+              <div class="canva-subpanel-inner">
+
+                <!-- 1. Iniciar sesión -->
+                <div class="canva-substep">
+                  <span class="canva-substep-num">1</span>
+                  <span class="canva-substep-text">Iniciar sesión</span>
+                </div>
+
+                <!-- 2. Elegir DOCENTES -->
+                <div class="canva-substep">
+                  <span class="canva-substep-num">2</span>
+                  <span class="canva-substep-text">Elegir la opción: <strong>DOCENTES</strong></span>
+                </div>
+
+                <!-- 3. Ubicación -->
+                <div class="canva-substep">
+                  <span class="canva-substep-num">3</span>
+                  <span class="canva-substep-text">Colombia / Yopal, Casanare, Colombia</span>
+                </div>
+
+                <!-- 4. IE La Campiña -->
+                <div class="canva-substep">
+                  <span class="canva-substep-num">4</span>
+                  <span class="canva-substep-text">IE La Campiña</span>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+          <div class="canva-divider" aria-hidden="true"></div>
+          <p style="margin:0; font-size:11.5px; color:var(--text-muted); font-weight:600; text-align:center; letter-spacing:.02em;">
+            Joam Fox 11
+          </p>
+        </div>
+      </div>
+
+      <div class="nested">
+        <p class="nested-header">SpotiFlac</p>
+        <div class="card">
+          <a class="row" href="https://github.com/spotiflacapp/SpotiFLAC-Mobile/releases" target="_blank" rel="noopener noreferrer">
+            <span class="row-name">SpotiFlac</span>
+          </a>
+          <div class="row copy-block" style="border-bottom:none;">
+            <button class="copy-btn" id="copyRepoBtn" type="button">
+              <span id="copyRepoLabel">Copiar Repositorio</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:14px;">
+        <a class="row" href="https://github.com/kushagrasinghx/BitChord/releases" target="_blank" rel="noopener noreferrer">
+          <span class="row-name">BitChord</span>
+        </a>
+        <a class="row" href="https://liteapks.com/download/iblack-os-icon-pack-747569" target="_blank" rel="noopener noreferrer">
+          <span class="row-name">IconPack</span>
+        </a>
+        <a class="row" href="https://github.com/NextAlone/Nagram/releases" target="_blank" rel="noopener noreferrer">
+          <span class="row-name">Nagram</span>
+        </a>
+        <a class="row" href="https://github.com/risin42/NagramX/releases" target="_blank" rel="noopener noreferrer">
+          <span class="row-name">NagramX</span>
+        </a>
+        <a class="row" href="https://github.com/anonfaded/FadCam/releases" target="_blank" rel="noopener noreferrer">
+          <span class="row-name">FadCam</span>
+        </a>
+        <a class="row" href="https://github.com/Riteshp2001/mpvRx/releases" target="_blank" rel="noopener noreferrer">
+          <span class="row-name">mpvRx</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- HUNGRY HEART: WILD STRIKER -->
+    <section class="group" data-reveal>
+      <div class="group-title">
+        <span class="badge">⚽</span>
+        <h2>Hungry Heart: Wild Striker</h2>
+      </div>
+
+      <div class="hh-list">
+
+        <!-- Veneco -->
+        <div class="hh-item">
+          <span class="hh-lang">Veneco <span class="hh-flag">🇻🇪</span></span>
+          <div class="hh-actions">
+            <a class="hh-link" href="https://mega.nz/file/UzlgVbRK#KOzM9x9mqXAhBItqt4BTjATSmL8LItfwdgzFaXp1PA4" target="_blank" rel="noopener noreferrer">
+              <span class="hh-icon">⬇</span> Abrir
+            </a>
+            <button class="hh-pass" type="button" data-pass="kanou" data-copied="false" aria-label="Copiar contraseña de Veneco">
+              <span class="hh-pass-label">🔑 Contraseña</span>
+              <span class="hh-pass-status">¡Copiado!</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- UTP -->
+    <section class="group" data-reveal>
+      <div class="group-title">
+        <span class="badge">🎓</span>
+        <h2>UTP</h2>
+      </div>
+
+      <div class="row canva-trigger-row">
+        <button class="canva-trigger-btn" id="utpTrigger" type="button" aria-expanded="false" aria-controls="utpPanel">
+          <span class="row-name">📚 Ver enlaces UTP</span>
+          <span class="canva-chevron" aria-hidden="true">▾</span>
+        </button>
+      </div>
+
+      <div class="canva-panel" id="utpPanel" data-open="false">
+        <div class="canva-panel-inner">
+          <div class="utp-list">
+
+            <!-- 1. UTP+ Class -->
+            <div class="utp-item">
+              <button class="utp-name-btn" type="button" data-copy-name="UTP+ Class" data-copied="false" aria-label="Copiar texto UTP+ Class">
+                <span class="utp-name-text">UTP+ Class</span>
+                <span class="utp-name-status">¡Copiado!</span>
+              </button>
+              <div class="utp-actions">
+                <button class="utp-link-btn" type="button" data-copy-link="https://class.utp.edu.pe/student/courses" data-copied="false" aria-label="Copiar enlace UTP+ Class">
+                  <span class="utp-link-label">🔗 Link</span>
+                  <span class="utp-link-status">¡Copiado!</span>
+                </button>
+                <a class="utp-open-btn" href="https://class.utp.edu.pe/student/courses" target="_blank" rel="noopener noreferrer" aria-label="Abrir UTP+ Class">
+                  ↗ Abrir
+                </a>
+              </div>
+            </div>
+
+            <!-- 2. UTP+ Portal -->
+            <div class="utp-item">
+              <button class="utp-name-btn" type="button" data-copy-name="UTP+ Portal" data-copied="false" aria-label="Copiar texto UTP+ Portal">
+                <span class="utp-name-text">UTP+ Portal</span>
+                <span class="utp-name-status">¡Copiado!</span>
+              </button>
+              <div class="utp-actions">
+                <button class="utp-link-btn" type="button" data-copy-link="https://portal.utp.edu.pe/inicio" data-copied="false" aria-label="Copiar enlace UTP+ Portal">
+                  <span class="utp-link-label">🔗 Link</span>
+                  <span class="utp-link-status">¡Copiado!</span>
+                </button>
+                <a class="utp-open-btn" href="https://portal.utp.edu.pe/inicio" target="_blank" rel="noopener noreferrer" aria-label="Abrir UTP+ Portal">
+                  ↗ Abrir
+                </a>
+              </div>
+            </div>
+
+            <!-- 3. UTP+ Biblio -->
+            <div class="utp-item">
+              <button class="utp-name-btn" type="button" data-copy-name="UTP+ Biblio" data-copied="false" aria-label="Copiar texto UTP+ Biblio">
+                <span class="utp-name-text">UTP+ Biblio</span>
+                <span class="utp-name-status">¡Copiado!</span>
+              </button>
+              <div class="utp-actions">
+                <button class="utp-link-btn" type="button" data-copy-link="https://tubiblioteca.utp.edu.pe/cgi-bin/koha/TB-search.pl" data-copied="false" aria-label="Copiar enlace UTP+ Biblio">
+                  <span class="utp-link-label">🔗 Link</span>
+                  <span class="utp-link-status">¡Copiado!</span>
+                </button>
+                <a class="utp-open-btn" href="https://tubiblioteca.utp.edu.pe/cgi-bin/koha/TB-search.pl" target="_blank" rel="noopener noreferrer" aria-label="Abrir UTP+ Biblio">
+                  ↗ Abrir
+                </a>
+              </div>
+            </div>
+
+            <!-- 4. UTP+ Chamba -->
+            <div class="utp-item">
+              <button class="utp-name-btn" type="button" data-copy-name="UTP+ Chamba" data-copied="false" aria-label="Copiar texto UTP+ Chamba">
+                <span class="utp-name-text">UTP+ Chamba</span>
+                <span class="utp-name-status">¡Copiado!</span>
+              </button>
+              <div class="utp-actions">
+                <button class="utp-link-btn" type="button" data-copy-link="https://utp.hiringroomcampus.com/" data-copied="false" aria-label="Copiar enlace UTP+ Chamba">
+                  <span class="utp-link-label">🔗 Link</span>
+                  <span class="utp-link-status">¡Copiado!</span>
+                </button>
+                <a class="utp-open-btn" href="https://utp.hiringroomcampus.com/" target="_blank" rel="noopener noreferrer" aria-label="Abrir UTP+ Chamba">
+                  ↗ Abrir
+                </a>
+              </div>
+            </div>
+
+            <!-- 5. UTP Encuestas -->
+            <div class="utp-item">
+              <button class="utp-name-btn" type="button" data-copy-name="UTP Encuestas" data-copied="false" aria-label="Copiar texto UTP Encuestas">
+                <span class="utp-name-text">UTP Encuestas</span>
+                <span class="utp-name-status">¡Copiado!</span>
+              </button>
+              <div class="utp-actions">
+                <button class="utp-link-btn" type="button" data-copy-link="https://encuestas.utp.edu.pe/Paginas/GestionEncuestasUTP.aspx?id=LvXtBzP8cQxyNlS4JRp5LA,," data-copied="false" aria-label="Copiar enlace UTP Encuestas">
+                  <span class="utp-link-label">🔗 Link</span>
+                  <span class="utp-link-status">¡Copiado!</span>
+                </button>
+                <a class="utp-open-btn" href="https://encuestas.utp.edu.pe/Paginas/GestionEncuestasUTP.aspx?id=LvXtBzP8cQxyNlS4JRp5LA,," target="_blank" rel="noopener noreferrer" aria-label="Abrir UTP Encuestas">
+                  ↗ Abrir
+                </a>
+              </div>
+            </div>
+
+            <!-- 6. UTP+ Info -->
+            <div class="utp-item">
+              <button class="utp-name-btn" type="button" data-copy-name="UTP+ Info" data-copied="false" aria-label="Copiar texto UTP+ Info">
+                <span class="utp-name-text">UTP+ Info</span>
+                <span class="utp-name-status">¡Copiado!</span>
+              </button>
+              <div class="utp-actions">
+                <button class="utp-link-btn" type="button" data-copy-link="https://info.utp.edu.pe/https://info.utp.edu.pe/" data-copied="false" aria-label="Copiar enlace UTP+ Info">
+                  <span class="utp-link-label">🔗 Link</span>
+                  <span class="utp-link-status">¡Copiado!</span>
+                </button>
+                <a class="utp-open-btn" href="https://info.utp.edu.pe/https://info.utp.edu.pe/" target="_blank" rel="noopener noreferrer" aria-label="Abrir UTP+ Info">
+                  ↗ Abrir
+                </a>
+              </div>
+            </div>
+
+            <!-- 7. SuSalud -->
+            <div class="utp-item">
+              <button class="utp-name-btn" type="button" data-copy-name="SuSalud" data-copied="false" aria-label="Copiar texto SuSalud">
+                <span class="utp-name-text">SuSalud</span>
+                <span class="utp-name-status">¡Copiado!</span>
+              </button>
+              <div class="utp-actions">
+                <button class="utp-link-btn" type="button" data-copy-link="https://app1.susalud.gob.pe/registro/" data-copied="false" aria-label="Copiar enlace SuSalud">
+                  <span class="utp-link-label">🔗 Link</span>
+                  <span class="utp-link-status">¡Copiado!</span>
+                </button>
+                <a class="utp-open-btn" href="https://app1.susalud.gob.pe/registro/" target="_blank" rel="noopener noreferrer" aria-label="Abrir SuSalud">
+                  ↗ Abrir
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESPALDO -->
+    <section class="group" data-reveal>
+      <div class="group-title">
+        <span class="badge">💾</span>
+        <h2>Respaldo</h2>
+      </div>
+      <div class="card">
+        <a class="row" href="https://drive.usercontent.google.com/download?id=1415qcYran_ZqDK0wGOlPnBbiam7VekvI&export=download&confirm=t" download target="_blank" rel="noopener noreferrer">
+          <span class="row-name">To💎nes</span>
+        </a>
+        <a class="row" href="https://drive.usercontent.google.com/download?id=1dplg5yjhKkANmjrUI6tzFAkgkk9uqSUk&export=download&confirm=t" download target="_blank" rel="noopener noreferrer">
+          <span class="row-name">No🔥va</span>
+        </a>
+        <a class="row" href="https://drive.usercontent.google.com/download?id=11sTfMtriG0LYIaGIziHMgMNSaQuyzP2i&export=download&confirm=t" download target="_blank" rel="noopener noreferrer">
+          <span class="row-name">Wa🍏+</span>
+        </a>
+        <a class="row" href="https://drive.usercontent.google.com/download?id=1OODqxhy-TkcqUoY21GMzpZXoicVOj3ww&export=download&confirm=t" download target="_blank" rel="noopener noreferrer">
+          <span class="row-name">Yt🎈</span>
+        </a>
+        <a class="row" href="https://drive.usercontent.google.com/download?id=1FzRDxNkcRBbUvMHR9XHjMBSUjC-z0OOX&export=download&confirm=t" download target="_blank" rel="noopener noreferrer">
+          <span class="row-name">YTDLnis💥</span>
+        </a>
+        <a class="row" href="https://drive.usercontent.google.com/download?id=1Eh34BocZyMm3oBp0NuDgKFSYj0sC_IKr&export=download&confirm=t" download target="_blank" rel="noopener noreferrer">
+          <span class="row-name">Diccionario 📚</span>
+        </a>
+        <a class="row" href="https://drive.usercontent.google.com/download?id=1nv-6au9P9rqyuJb8Fy5CCSvcAxrjF0BB&export=download&confirm=t" download target="_blank" rel="noopener noreferrer">
+          <span class="row-name">Mio ⚫</span>
+        </a>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <div class="footer-card" id="footerEl">
+      <div class="footer-inner" id="footerInner">
+        <span class="footer-flame-wrap">
+          <span class="footer-flame" id="footerFlame" aria-hidden="true">🔥</span>
+        </span>
+        <span class="by">By Joam</span>
+        <span class="footer-bar"></span>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+<button class="back-to-top" id="backToTop" type="button" aria-label="Volver arriba" data-visible="false">↑</button>
+
+<script>
+/* =========================================================
+   0. UTILIDADES + DETECCIÓN DE DISPOSITIVO
+   ========================================================= */
+var REDUCE = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var FINE_POINTER = window.matchMedia && window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+var IS_MOBILE = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+var SAVE_DATA = navigator.connection && (navigator.connection.saveData || /2g/.test(navigator.connection.effectiveType || ''));
+var LOW_END = IS_MOBILE && (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4);
+var root = document.documentElement;
+
+function hexToRgb(hex){
+  hex = (hex || '').trim().replace('#','');
+  if(hex.length === 3) hex = hex.split('').map(function(c){ return c + c; }).join('');
+  var n = parseInt(hex, 16);
+  if(isNaN(n)) return {r:232,g:98,b:12};
+  return { r:(n>>16)&255, g:(n>>8)&255, b:n&255 };
+}
+function cssVar(name){
+  return getComputedStyle(root).getPropertyValue(name).trim();
+}
+function accentRGB(){ return hexToRgb(cssVar('--accent') || '#E8620C'); }
+function accent2RGB(){ return hexToRgb(cssVar('--accent-2') || '#B8430A'); }
+
+/* =========================================================
+   1. TEMA + PALETAS
+   ========================================================= */
+(function(){
+  var toggle = document.getElementById('themeToggle');
+  var icon = document.getElementById('themeIcon');
+  var colorPicker = document.getElementById('colorPicker');
+  var colorBtn = document.getElementById('colorBtn');
+  var colorPopover = document.getElementById('colorPopover');
+  var swatches = document.querySelectorAll('.swatch');
+
+  var PALETTES = {
+    naranja:  { light:{accent:'#E8620C', accent2:'#B8430A', soft:'#FBE3D0', border:'#F0C29B', onAccent:'#1B0E04', bg:'#FBF3EA'}, dark:{accent:'#FF8A3D', accent2:'#FFB26B', soft:'#3B2413', border:'#5C3A1F', onAccent:'#1B0E04', bg:'#0E0A06'} },
+    azul:     { light:{accent:'#2159D9', accent2:'#173F9E', soft:'#E1EAFC', border:'#AEC7F7', onAccent:'#FFFFFF', bg:'#EEF4FE'}, dark:{accent:'#6FA8FF', accent2:'#9CC5FF', soft:'#1B2C4D', border:'#2C4573', onAccent:'#0B172E', bg:'#070F1F'} },
+    rojo:     { light:{accent:'#DC2F2F', accent2:'#A81F1F', soft:'#FBE3E3', border:'#F3B8B8', onAccent:'#FFFFFF', bg:'#FDF0EE'}, dark:{accent:'#FF6B6B', accent2:'#FF9A9A', soft:'#45191A', border:'#5C2323', onAccent:'#2B0A0A', bg:'#170606'} },
+    verde:    { light:{accent:'#188A4C', accent2:'#0F6B39', soft:'#DFF5E7', border:'#B7E8C9', onAccent:'#FFFFFF', bg:'#EFFAF2'}, dark:{accent:'#4ADE80', accent2:'#7CEBAA', soft:'#153A26', border:'#1D5636', onAccent:'#062814', bg:'#04140C'} },
+    amarillo: { light:{accent:'#C99A02', accent2:'#8C6A00', soft:'#FBF0CB', border:'#F0DA98', onAccent:'#241900', bg:'#FFFAEA'}, dark:{accent:'#FFD34D', accent2:'#FFE08A', soft:'#463610', border:'#5C4A12', onAccent:'#241900', bg:'#150F03'} },
+    rosado:   { light:{accent:'#E8368F', accent2:'#B81F6C', soft:'#FDE3F0', border:'#F5B8DA', onAccent:'#FFFFFF', bg:'#FEF1F8'}, dark:{accent:'#FF7AC0', accent2:'#FFA8D6', soft:'#3E1730', border:'#5C2340', onAccent:'#2B0A1D', bg:'#170512'} }
+  };
+
+  var currentAccent = 'naranja';
+
+  function systemPrefersDark(){
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+  function effectiveTheme(){
+    var manual = root.getAttribute('data-theme');
+    if(manual === 'dark' || manual === 'light') return manual;
+    return systemPrefersDark() ? 'dark' : 'light';
+  }
+  function updateIcon(){
+    icon.textContent = effectiveTheme() === 'dark' ? '☀️' : '🌙';
+  }
+
+  function applyAccent(name){
+    if(!PALETTES[name]) name = 'naranja';
+    currentAccent = name;
+    var p = PALETTES[name][effectiveTheme() === 'dark' ? 'dark' : 'light'];
+    root.style.setProperty('--accent', p.accent);
+    root.style.setProperty('--accent-2', p.accent2);
+    root.style.setProperty('--accent-soft', p.soft);
+    root.style.setProperty('--border-strong', p.border);
+    root.style.setProperty('--on-accent', p.onAccent);
+    root.style.setProperty('--bg', p.bg);
+    swatches.forEach(function(s){
+      s.setAttribute('data-active', s.getAttribute('data-color') === name ? 'true' : 'false');
+    });
+    window.dispatchEvent(new CustomEvent('accentchange'));
+  }
+
+  function openPopover(open){
+    colorPopover.setAttribute('data-open', open ? 'true' : 'false');
+    colorBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+
+  function applyStoredPrefs(){
+    try{
+      var savedTheme = localStorage.getItem('lomastop-theme');
+      if(savedTheme === 'dark' || savedTheme === 'light'){
+        root.setAttribute('data-theme', savedTheme);
+      }
+      var savedAccent = localStorage.getItem('lomastop-accent');
+      if(savedAccent && PALETTES[savedAccent]) currentAccent = savedAccent;
+    }catch(e){}
+    updateIcon();
+    applyAccent(currentAccent);
+  }
+
+  toggle.addEventListener('click', function(){
+    var next = effectiveTheme() === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try{ localStorage.setItem('lomastop-theme', next); }catch(e){}
+    updateIcon();
+    applyAccent(currentAccent);
+  });
+
+  colorBtn.addEventListener('click', function(e){
+    e.stopPropagation();
+    openPopover(colorPopover.getAttribute('data-open') !== 'true');
+  });
+
+  document.addEventListener('click', function(e){
+    if(!colorPicker.contains(e.target)) openPopover(false);
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') openPopover(false);
+  });
+
+  swatches.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var color = btn.getAttribute('data-color');
+      applyAccent(color);
+      try{ localStorage.setItem('lomastop-accent', color); }catch(e){}
+      openPopover(false);
+    });
+  });
+
+  if(window.matchMedia){
+    var mq = window.matchMedia('(prefers-color-scheme: dark)');
+    var handler = function(){
+      if(!root.getAttribute('data-theme')){
+        updateIcon();
+        applyAccent(currentAccent);
+      }
+    };
+    if(mq.addEventListener) mq.addEventListener('change', handler);
+    else if(mq.addListener) mq.addListener(handler);
+  }
+
+  applyStoredPrefs();
+  window.__applyAccent = applyAccent;
+})();
+
+/* =========================================================
+   2. FONDO DE PARTÍCULAS (optimizado)
+   ========================================================= */
+(function(){
+  var canvas = document.getElementById('fx');
+  if(!canvas || !canvas.getContext) return;
+
+  if(SAVE_DATA || LOW_END){
+    canvas.style.display = 'none';
+    return;
+  }
+
+  var ctx = canvas.getContext('2d', { alpha: true });
+  var dpr = Math.min(window.devicePixelRatio || 1, IS_MOBILE ? 1.5 : 2);
+  var W = 0, H = 0, particles = [], raf = null, running = true;
+  var mouse = { x:-9999, y:-9999 };
+  var c1 = accentRGB(), c2 = accent2RGB();
+
+  var MAX_PARTICLES = IS_MOBILE ? 35 : 70;
+  var DENSITY = IS_MOBILE ? 36000 : 26000;
+  var DRAW_LINKS = !IS_MOBILE;
+  var LINK_DIST = 150;
+  var FPS_CAP = IS_MOBILE ? 40 : 55;
+  var FRAME_MIN = 1000 / FPS_CAP;
+
+  var lastFrame = 0;
+
+  function resize(){
+    W = window.innerWidth;
+    H = window.innerHeight;
+    canvas.width = Math.floor(W * dpr);
+    canvas.height = Math.floor(H * dpr);
+    canvas.style.width = W + 'px';
+    canvas.style.height = H + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    build();
+  }
+
+  function build(){
+    var target = Math.min(MAX_PARTICLES, Math.max(14, Math.round((W * H) / DENSITY)));
+    particles = new Array(target);
+    for(var i = 0; i < target; i++){
+      particles[i] = {
+        x: Math.random() * W,
+        y: Math.random() * H,
+        vx: (Math.random() - 0.5) * 0.28,
+        vy: (Math.random() - 0.5) * 0.28,
+        r: Math.random() * 1.7 + 0.6,
+        t: Math.random()
+      };
+    }
+  }
+
+  function step(now){
+    if(!running) return;
+    raf = requestAnimationFrame(step);
+
+    if(now - lastFrame < FRAME_MIN) return;
+    lastFrame = now;
+
+    ctx.clearRect(0, 0, W, H);
+
+    var i, j, p, q, dx, dy, d2, alpha;
+
+    for(i = 0; i < particles.length; i++){
+      p = particles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+
+      if(p.x < -20) p.x = W + 20;
+      else if(p.x > W + 20) p.x = -20;
+      if(p.y < -20) p.y = H + 20;
+      else if(p.y > H + 20) p.y = -20;
+
+      if(mouse.x > -9999){
+        dx = p.x - mouse.x;
+        dy = p.y - mouse.y;
+        d2 = dx * dx + dy * dy;
+        if(d2 < 18000 && d2 > 0.01){
+          var d = Math.sqrt(d2);
+          var force = (1 - d / 135) * 0.85;
+          p.x += (dx / d) * force;
+          p.y += (dy / d) * force;
+        }
+      }
+    }
+
+    if(DRAW_LINKS){
+      ctx.lineWidth = 1;
+      for(i = 0; i < particles.length; i++){
+        p = particles[i];
+        for(j = i + 1; j < particles.length; j++){
+          q = particles[j];
+          dx = p.x - q.x;
+          dy = p.y - q.y;
+          d2 = dx * dx + dy * dy;
+          if(d2 < LINK_DIST * LINK_DIST){
+            alpha = (1 - d2 / (LINK_DIST * LINK_DIST)) * 0.2;
+            ctx.strokeStyle = 'rgba(' + c1.r + ',' + c1.g + ',' + c1.b + ',' + alpha.toFixed(3) + ')';
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(q.x, q.y);
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    for(i = 0; i < particles.length; i++){
+      p = particles[i];
+      var col = p.t > 0.72 ? c2 : c1;
+      ctx.fillStyle = 'rgba(' + col.r + ',' + col.g + ',' + col.b + ',0.55)';
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, 6.2832);
+      ctx.fill();
+    }
+  }
+
+  var resizeTimer;
+  window.addEventListener('resize', function(){
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(resize, 200);
+  }, { passive:true });
+
+  window.addEventListener('mousemove', function(e){
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+  }, { passive:true });
+
+  window.addEventListener('mouseout', function(){ mouse.x = mouse.y = -9999; });
+
+  document.addEventListener('visibilitychange', function(){
+    if(document.hidden){
+      running = false;
+      if(raf) cancelAnimationFrame(raf);
+      raf = null;
+    } else if(!REDUCE){
+      running = true;
+      lastFrame = 0;
+      raf = requestAnimationFrame(step);
+    }
+  });
+
+  window.addEventListener('accentchange', function(){
+    c1 = accentRGB();
+    c2 = accent2RGB();
+  });
+
+  resize();
+  if(REDUCE){
+    running = false;
+    step(0);
+    running = false;
+    if(raf) cancelAnimationFrame(raf);
+    raf = null;
+  } else {
+    raf = requestAnimationFrame(step);
+  }
+})();
+
+/* =========================================================
+   3. SPOTLIGHT DEL CURSOR (solo desktop)
+   ========================================================= */
+(function(){
+  var el = document.getElementById('spotlight');
+  if(!el || !FINE_POINTER || REDUCE || IS_MOBILE) return;
+  var tx = 0, ty = 0, cx = 0, cy = 0, started = false;
+  var raf = null;
+
+  window.addEventListener('mousemove', function(e){
+    tx = e.clientX;
+    ty = e.clientY;
+    if(!started){
+      started = true;
+      cx = tx; cy = ty;
+      el.classList.add('on');
+      raf = requestAnimationFrame(loop);
+    }
+  }, { passive:true });
+
+  document.addEventListener('mouseleave', function(){
+    el.classList.remove('on');
+    started = false;
+    if(raf) cancelAnimationFrame(raf);
+    raf = null;
+  });
+
+  function loop(){
+    if(!started) return;
+    cx += (tx - cx) * 0.14;
+    cy += (ty - cy) * 0.14;
+    el.style.transform = 'translate3d(' + cx + 'px,' + cy + 'px,0)';
+    raf = requestAnimationFrame(loop);
+  }
+})();
+
+/* =========================================================
+   4. LOADER
+   ========================================================= */
+(function(){
+  var loader = document.getElementById('loader');
+  if(!loader) return;
+  function finish(){
+    loader.classList.add('done');
+    document.body.style.overflow = '';
+    setTimeout(function(){ if(loader.parentNode) loader.parentNode.removeChild(loader); }, 700);
+  }
+  document.body.style.overflow = 'hidden';
+  var done = false;
+  function once(){ if(done) return; done = true; finish(); }
+  if(document.readyState === 'complete') setTimeout(once, 400);
+  else window.addEventListener('load', function(){ setTimeout(once, 350); });
+  setTimeout(once, 2200);
+})();
+
+/* =========================================================
+   5. VOLVER ARRIBA
+   ========================================================= */
+(function(){
+  var btn = document.getElementById('backToTop');
+  var ticking = false;
+  var lastVisible = false;
+
+  function update(){
+    var visible = window.scrollY > 420;
+    if(visible !== lastVisible){
+      btn.setAttribute('data-visible', visible ? 'true' : 'false');
+      lastVisible = visible;
+    }
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      window.requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, { passive:true });
+  window.addEventListener('resize', update, { passive:true });
+  update();
+
+  if(btn){
+    btn.addEventListener('click', function(){
+      window.scrollTo({ top:0, behavior: REDUCE ? 'auto' : 'smooth' });
+    });
+  }
+})();
+
+/* =========================================================
+   6. REVEAL AL SCROLL
+   ========================================================= */
+(function(){
+  var items = document.querySelectorAll('[data-reveal], .footer-card');
+  if(!('IntersectionObserver' in window)){
+    items.forEach(function(el){ el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        en.target.classList.add('in');
+        io.unobserve(en.target);
+      }
+    });
+  }, { threshold:0.08, rootMargin:'0px 0px -8% 0px' });
+
+  items.forEach(function(el, i){
+    el.style.transitionDelay = Math.min(i * 50, 220) + 'ms';
+    io.observe(el);
+  });
+})();
+
+/* =========================================================
+   7. TILT 3D + GLOW EN TARJETAS (solo desktop)
+   ========================================================= */
+(function(){
+  if(!FINE_POINTER || REDUCE || IS_MOBILE) return;
+  var cards = document.querySelectorAll('.card');
+
+  cards.forEach(function(card){
+    var rect = null;
+    var rafId = null;
+    var rx = 0, ry = 0, trx = 0, tryy = 0;
+
+    function animate(){
+      rx += (trx - rx) * 0.16;
+      ry += (tryy - ry) * 0.16;
+      card.style.transform = 'perspective(900px) rotateX(' + rx.toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) + 'deg)';
+      if(Math.abs(trx - rx) > 0.02 || Math.abs(tryy - ry) > 0.02){
+        rafId = requestAnimationFrame(animate);
+      } else {
+        card.style.transform = 'perspective(900px) rotateX(' + trx.toFixed(2) + 'deg) rotateY(' + tryy.toFixed(2) + 'deg)';
+        rafId = null;
+      }
+    }
+
+    function kick(){ if(!rafId) rafId = requestAnimationFrame(animate); }
+
+    card.addEventListener('mousemove', function(e){
+      rect = card.getBoundingClientRect();
+      var px = (e.clientX - rect.left) / rect.width;
+      var py = (e.clientY - rect.top) / rect.height;
+
+      card.style.setProperty('--mx', (px * 100).toFixed(2) + '%');
+      card.style.setProperty('--my', (py * 100).toFixed(2) + '%');
+
+      tryy = (px - 0.5) * 7;
+      trx = -(py - 0.5) * 7;
+      kick();
+    }, { passive:true });
+
+    card.addEventListener('mouseleave', function(){
+      trx = 0; tryy = 0;
+      kick();
+    });
+  });
+
+  document.querySelectorAll('section.group').forEach(function(sec){
+    sec.addEventListener('mousemove', function(e){
+      var r = sec.getBoundingClientRect();
+      sec.style.setProperty('--gx', (((e.clientX - r.left) / r.width) * 100).toFixed(2) + '%');
+      sec.style.setProperty('--gy', (((e.clientY - r.top) / r.height) * 100).toFixed(2) + '%');
+    }, { passive:true });
+  });
+})();
+
+/* =========================================================
+   8. FLECHAS EN LAS FILAS
+   ========================================================= */
+(function(){
+  document.querySelectorAll('a.row').forEach(function(row){
+    if(row.querySelector('.row-arrow')) return;
+    var arrow = document.createElement('span');
+    arrow.className = 'row-arrow';
+    arrow.setAttribute('aria-hidden', 'true');
+    arrow.textContent = '↗';
+    row.appendChild(arrow);
+  });
+})();
+
+/* =========================================================
+   9. EFECTO MÁQUINA DE ESCRIBIR
+   ========================================================= */
+(function(){
+  var target = document.getElementById('typeTarget');
+  if(!target) return;
+  var text = 'Repositorio de módulos, apps y respaldos.';
+  if(REDUCE){ target.textContent = text; return; }
+  var i = 0;
+  function type(){
+    if(i <= text.length){
+      target.textContent = text.slice(0, i);
+      i++;
+      setTimeout(type, 26 + Math.random() * 40);
+    }
+  }
+  setTimeout(type, 800);
+})();
+
+/* =========================================================
+   10. COPIAR REPOSITORIO
+   ========================================================= */
+(function(){
+  var btn = document.getElementById('copyRepoBtn');
+  var label = document.getElementById('copyRepoLabel');
+  if(!btn) return;
+  var textToCopy = 'https://raw.githubusercontent.com/zarzet/SpotiFLAC-Extension/main/registry.json';
+  var resetTimer = null;
+
+  function fallbackCopy(text){
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    try{ document.execCommand('copy'); }catch(e){}
+    document.body.removeChild(ta);
+  }
+
+  function showCopied(){
+    btn.setAttribute('data-copied', 'true');
+    label.textContent = '¡Copiado!';
+    clearTimeout(resetTimer);
+    resetTimer = setTimeout(function(){
+      btn.setAttribute('data-copied', 'false');
+      label.textContent = 'Copiar Repositorio';
+    }, 1900);
+  }
+
+  btn.addEventListener('click', function(e){
+    e.stopPropagation();
+    if(navigator.clipboard && window.isSecureContext){
+      navigator.clipboard.writeText(textToCopy).then(showCopied, function(){
+        fallbackCopy(textToCopy);
+        showCopied();
+      });
+    } else {
+      fallbackCopy(textToCopy);
+      showCopied();
+    }
+  });
+})();
+
+/* =========================================================
+   11. ANIMACIÓN DEL HERO Y DEL PIE
+   ========================================================= */
+(function(){
+  function bounce(el){
+    el.classList.add('loaded');
+    el.classList.remove('pulse');
+    void el.offsetWidth;
+    el.classList.add('pulse');
+  }
+
+  var heroEl = document.getElementById('heroEl');
+  var heroInner = document.getElementById('heroInner');
+  if(heroInner){
+    heroInner.addEventListener('animationend', function(e){
+      if(e.animationName === 'rise') heroInner.classList.add('loaded');
+      if(e.animationName === 'heroElegant') heroInner.classList.remove('pulse');
+    });
+  }
+  if(heroEl && heroInner){
+    heroEl.addEventListener('click', function(){ bounce(heroInner); });
+  }
+
+  var footerEl = document.getElementById('footerEl');
+  var footerInner = document.getElementById('footerInner');
+  var footerFlame = document.getElementById('footerFlame');
+
+  if(footerEl && footerInner && footerFlame){
+    footerEl.addEventListener('click', function(){
+      bounce(footerInner);
+      footerFlame.classList.remove('burst');
+      void footerFlame.offsetWidth;
+      footerFlame.classList.add('burst');
+    });
+    footerFlame.addEventListener('animationend', function(e){
+      if(e.animationName === 'flameBurst') footerFlame.classList.remove('burst');
+    });
+  }
+})();
+
+/* =========================================================
+   12. PARALLAX SUAVE DEL HERO (solo desktop)
+   ========================================================= */
+(function(){
+  if(REDUCE || !FINE_POINTER || IS_MOBILE) return;
+  var hero = document.querySelector('.hero-inner');
+  if(!hero) return;
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(ticking) return;
+    ticking = true;
+    requestAnimationFrame(function(){
+      var y = window.scrollY;
+      if(y < 400){
+        hero.style.transform = 'translateY(' + (y * 0.09).toFixed(2) + 'px)';
+      }
+      ticking = false;
+    });
+  }, { passive:true });
+})();
+
+/* =========================================================
+   13. DISTRIBUCIÓN EN COLUMNAS (ESCRITORIO)
+   ========================================================= */
+(function(){
+  var grid = document.getElementById('sectionsGrid');
+  if(!grid) return;
+
+  var sections = Array.prototype.slice.call(grid.children).filter(function(el){
+    return el.tagName === 'SECTION';
+  });
+  if(sections.length < 2) return;
+
+  var BREAKPOINT = 900;
+  var COLS = 2;
+  var isColumns = false;
+
+  function emptyGrid(){
+    while(grid.firstChild) grid.removeChild(grid.firstChild);
+  }
+
+  function toStack(){
+    if(!isColumns) return;
+    emptyGrid();
+    sections.forEach(function(sec){ grid.appendChild(sec); });
+    isColumns = false;
+  }
+
+  function toColumns(){
+    emptyGrid();
+    sections.forEach(function(sec){ grid.appendChild(sec); });
+
+    var heights = sections.map(function(sec){ return sec.offsetHeight; });
+
+    var cols = [];
+    var colHeights = [];
+    for(var c = 0; c < COLS; c++){
+      var col = document.createElement('div');
+      col.className = 'sections-col';
+      cols.push(col);
+      colHeights.push(0);
+    }
+
+    sections.forEach(function(sec, i){
+      var target = 0;
+      for(var c = 1; c < COLS; c++){
+        if(colHeights[c] < colHeights[target]) target = c;
+      }
+      cols[target].appendChild(sec);
+      colHeights[target] += heights[i];
+    });
+
+    emptyGrid();
+    cols.forEach(function(col){ grid.appendChild(col); });
+    isColumns = true;
+  }
+
+  function layout(){
+    if(window.innerWidth >= BREAKPOINT) toColumns();
+    else toStack();
+  }
+
+  layout();
+
+  if(document.fonts && document.fonts.ready){
+    document.fonts.ready.then(layout);
+  }
+
+  var resizeTimer;
+  window.addEventListener('resize', function(){
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(layout, 250);
+  }, { passive:true });
+})();
+
+/* =========================================================
+   14. PANEL DESPLEGABLE (Canva Pro + UTP)
+   ========================================================= */
+(function(){
+  var triggers = [
+    { trigger: document.getElementById('canvaTrigger'), panel: document.getElementById('canvaPanel') },
+    { trigger: document.getElementById('utpTrigger'), panel: document.getElementById('utpPanel') }
+  ];
+
+  triggers.forEach(function(item){
+    var trigger = item.trigger;
+    var panel = item.panel;
+    if(!trigger || !panel) return;
+
+    function setOpen(open){
+      trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      panel.setAttribute('data-open', open ? 'true' : 'false');
+
+      if(open){
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+        setTimeout(function(){
+          if(panel.getAttribute('data-open') === 'true'){
+            panel.style.maxHeight = 'none';
+          }
+        }, 600);
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+        void panel.offsetHeight;
+        panel.style.maxHeight = '0px';
+      }
+    }
+
+    trigger.addEventListener('click', function(e){
+      e.stopPropagation();
+      var isOpen = panel.getAttribute('data-open') === 'true';
+      setOpen(!isOpen);
+    });
+
+    document.addEventListener('click', function(e){
+      if(panel.getAttribute('data-open') !== 'true') return;
+      if(panel.contains(e.target) || trigger.contains(e.target)) return;
+      setOpen(false);
+    });
+
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && panel.getAttribute('data-open') === 'true'){
+        setOpen(false);
+      }
+    });
+  });
+})();
+
+/* =========================================================
+   15. SUBDESPLEGABLE (Ver más / Ver menos)
+   ========================================================= */
+(function(){
+  var trigger = document.getElementById('canvaSubTrigger');
+  var panel = document.getElementById('canvaSubPanel');
+  var label = document.getElementById('canvaSubTriggerText');
+  if(!trigger || !panel) return;
+
+  function setSubOpen(open){
+    trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    panel.setAttribute('data-open', open ? 'true' : 'false');
+    if(label) label.textContent = open ? 'Ver menos' : 'Ver más';
+
+    if(open){
+      panel.style.maxHeight = panel.scrollHeight + 'px';
+      setTimeout(function(){
+        if(panel.getAttribute('data-open') === 'true'){
+          panel.style.maxHeight = 'none';
+        }
+      }, 500);
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + 'px';
+      void panel.offsetHeight;
+      panel.style.maxHeight = '0px';
+    }
+  }
+
+  trigger.addEventListener('click', function(e){
+    e.stopPropagation();
+    var isOpen = panel.getAttribute('data-open') === 'true';
+    setSubOpen(!isOpen);
+  });
+})();
+
+/* =========================================================
+   16. COPIAR PROMPT (Canva Pro)
+   ========================================================= */
+(function(){
+  var promptBtn = document.getElementById('canvaPromptBtn');
+  var promptLabel = document.getElementById('canvaPromptLabel');
+  if(!promptBtn) return;
+
+  var PROMPT_TEXT = 'Replica este html para la siguiente persona:\n\n' +
+'Julio Carrasco Gutiérrez \n' +
+'cambia la fecha de emision por otra.\n\n' +
+'cambia la institución por esta: Institución Educativa La Campiña\n' +
+'este es el logo: http://www.ielacampina-yopal-casanare.edu.co/sites/institucion-educativa-la-campina/content/files/000025/1241_ecampina300x300_200x200.png\n\n' +
+'la pagina del nuevo colegio es este: http://www.ielacampina-yopal-casanare.edu.co/\n\n' +
+'que quede un membrete muy profesional\n\n' +
+'<!DOCTYPE html>\n' +
+'<html lang="es">\n' +
+'<head>\n' +
+'  <meta charset="UTF-8" />\n' +
+'  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>\n' +
+'  <title>Constancia Institucional - Colegio Nacional Loperena</title>\n' +
+'  <style>\n' +
+'    body {\n' +
+'      font-family: \'Arial\', sans-serif;\n' +
+'      background-color: #f4f4f4;\n' +
+'      margin: 0;\n' +
+'      padding: 20px;\n' +
+'      display: flex;\n' +
+'      justify-content: center;\n' +
+'      align-items: center;\n' +
+'      min-height: 100vh;\n' +
+'    }\n' +
+'    .document {\n' +
+'      width: 100%;\n' +
+'      max-width: 800px;\n' +
+'      background: white;\n' +
+'      padding: 40px;\n' +
+'      border-radius: 12px;\n' +
+'      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);\n' +
+'      border: 1px solid #e0e0e0;\n' +
+'    }\n' +
+'    .header {\n' +
+'      text-align: center;\n' +
+'      color: #003366;\n' +
+'      margin-bottom: 20px;\n' +
+'    }\n' +
+'    .header h1 {\n' +
+'      margin: 0;\n' +
+'      font-size: 26px;\n' +
+'      font-weight: bold;\n' +
+'    }\n' +
+'    .header p {\n' +
+'      margin: 5px 0 0;\n' +
+'      font-style: italic;\n' +
+'      color: #003366;\n' +
+'      font-size: 16px;\n' +
+'    }\n' +
+'    .website {\n' +
+'      color: #0055cc;\n' +
+'      text-decoration: none;\n' +
+'      font-size: 14px;\n' +
+'    }\n' +
+'    .website:hover {\n' +
+'      text-decoration: underline;\n' +
+'    }\n' +
+'    .title {\n' +
+'      text-align: center;\n' +
+'      color: #003366;\n' +
+'      font-size: 20px;\n' +
+'      font-weight: bold;\n' +
+'      margin: 25px 0 15px;\n' +
+'      text-decoration: underline;\n' +
+'    }\n' +
+'    .content {\n' +
+'      margin: 20px 0;\n' +
+'      line-height: 1.8;\n' +
+'      color: #333;\n' +
+'    }\n' +
+'    .content p {\n' +
+'      margin: 10px 0;\n' +
+'    }\n' +
+'    .id-code {\n' +
+'      text-align: center;\n' +
+'      font-weight: bold;\n' +
+'      color: #003366;\n' +
+'      font-size: 18px;\n' +
+'      margin: 15px 0;\n' +
+'    }\n' +
+'    .signature {\n' +
+'      margin-top: 40px;\n' +
+'    }\n' +
+'    .signature-line {\n' +
+'      width: 300px;\n' +
+'      border-top: 1px solid #000;\n' +
+'      margin: 10px 0 5px 0;\n' +
+'    }\n' +
+'    .signature p {\n' +
+'      margin: 5px 0 0 0;\n' +
+'      color: #333;\n' +
+'    }\n' +
+'    .stamp {\n' +
+'      text-align: right;\n' +
+'      font-size: 16px;\n' +
+'      font-weight: bold;\n' +
+'      font-style: italic;\n' +
+'      color: #b8860b; /* Dorado oscuro */\n' +
+'      margin-top: 40px;\n' +
+'    }\n' +
+'    .footer {\n' +
+'      text-align: center;\n' +
+'      margin-top: 50px;\n' +
+'      font-size: 12px;\n' +
+'      color: #555;\n' +
+'      border-top: 1px solid #ddd;\n' +
+'      padding-top: 10px;\n' +
+'    }\n' +
+'    @media print {\n' +
+'      body {\n' +
+'        background: white;\n' +
+'        padding: 0;\n' +
+'      }\n' +
+'      .document {\n' +
+'        box-shadow: none;\n' +
+'        border: none;\n' +
+'        padding: 30px;\n' +
+'      }\n' +
+'    }\n' +
+'  </style>\n' +
+'</head>\n' +
+'<body>\n\n' +
+'  <div class="document">\n' +
+'    <div class="header">\n' +
+'      <h1>Colegio Nacional Loperena</h1>\n' +
+'      <p><em>Formando líderes con propósito y pasión por el conocimiento</em></p>\n' +
+'      <a href="https://loperena.edu.co" class="website" target="_blank">www.loperena.edu.co</a>\n' +
+'    </div>\n\n' +
+'    <div class="title">CONSTANCIA DE VINCULACIÓN LABORAL</div>\n\n' +
+'    <div class="content">\n' +
+'      <p><strong>Nombre:</strong> Matias Cardenas</p>\n' +
+'      <p><strong>Cargo:</strong> Bibliotecario con título oficial</p>\n' +
+'      <p><strong>Dependencia:</strong> Biblioteca Institucional – Niveles de Educación Primaria y Secundaria</p>\n' +
+'      <p><strong>Fecha de Emisión:</strong> 12 de julio de 2025</p>\n' +
+'      <p>\n' +
+'        Esta constancia acredita que <strong>Matias Cardenas</strong> se desempeña como bibliotecario oficial \n' +
+'        en el Colegio Nacional Loperena, contribuyendo al fortalecimiento de la cultura lectora, \n' +
+'        la gestión del conocimiento y el acompañamiento pedagógico dentro del proyecto educativo institucional.\n' +
+'      </p>\n' +
+'    </div>\n\n' +
+'    <p class="id-code">ID-BIB-LOP-042</p>\n\n' +
+'    <div class="signature">\n' +
+'      <p><strong>Firma del Rector:</strong></p>\n' +
+'      <div class="signature-line"></div>\n' +
+'      <p><em>Juan Carlos Mendoza López</em></p>\n' +
+'      <p><strong>Nombre:</strong> Juan Carlos Mendoza López</p>\n' +
+'      <p><strong>Cargo:</strong> Rector Académico</p>\n' +
+'    </div>\n\n' +
+'    <div class="stamp">\n' +
+'      [Sello Institucional] 🏛️\n' +
+'    </div>\n\n' +
+'    <div class="footer">\n' +
+'      Documento válido como identificación interna – Colegio Nacional Loperena – \n' +
+'      <a href="https://loperena.edu.co" class="website" target="_blank">www.loperena.edu.co</a>\n' +
+'    </div>\n' +
+'  </div>\n\n' +
+'</body>\n' +
+'</html>';
+
+  var resetTimer = null;
+
+  function fallbackCopy(text){
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    ta.setAttribute('readonly', '');
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    try{ document.execCommand('copy'); }catch(e){}
+    document.body.removeChild(ta);
+  }
+
+  function showCopied(){
+    promptBtn.setAttribute('data-copied', 'true');
+    if(promptLabel) promptLabel.textContent = '¡Prompt Copiado!';
+    clearTimeout(resetTimer);
+    resetTimer = setTimeout(function(){
+      promptBtn.setAttribute('data-copied', 'false');
+      if(promptLabel) promptLabel.textContent = 'Copiar prompt';
+    }, 2200);
+  }
+
+  promptBtn.addEventListener('click', function(e){
+    e.stopPropagation();
+
+    if(navigator.clipboard && window.isSecureContext){
+      navigator.clipboard.writeText(PROMPT_TEXT).then(showCopied, function(){
+        fallbackCopy(PROMPT_TEXT);
+        showCopied();
+      });
+    } else {
+      fallbackCopy(PROMPT_TEXT);
+      showCopied();
+    }
+  });
+})();
+
+/* =========================================================
+   17. BOTONES "CONTRASEÑA" (Hungry Heart)
+   ========================================================= */
+(function(){
+  var buttons = document.querySelectorAll('.hh-pass');
+  if(!buttons.length) return;
+
+  function fallbackCopy(text){
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    ta.setAttribute('readonly', '');
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    try{ document.execCommand('copy'); }catch(e){}
+    document.body.removeChild(ta);
+  }
+
+  buttons.forEach(function(btn){
+    var timer = null;
+
+    function showCopied(){
+      btn.setAttribute('data-copied', 'true');
+      clearTimeout(timer);
+      timer = setTimeout(function(){
+        btn.setAttribute('data-copied', 'false');
+      }, 1700);
+    }
+
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var text = btn.getAttribute('data-pass') || '';
+
+      if(navigator.clipboard && window.isSecureContext){
+        navigator.clipboard.writeText(text).then(showCopied, function(){
+          fallbackCopy(text);
+          showCopied();
+        });
+      } else {
+        fallbackCopy(text);
+        showCopied();
+      }
+    });
+  });
+})();
+
+/* =========================================================
+   18. UTP - COPIAR NOMBRE Y ENLACE
+   ========================================================= */
+(function(){
+  function fallbackCopy(text){
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    ta.setAttribute('readonly', '');
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    try{ document.execCommand('copy'); }catch(e){}
+    document.body.removeChild(ta);
+  }
+
+  function copyText(text, onSuccess){
+    if(navigator.clipboard && window.isSecureContext){
+      navigator.clipboard.writeText(text).then(onSuccess, function(){
+        fallbackCopy(text);
+        onSuccess();
+      });
+    } else {
+      fallbackCopy(text);
+      onSuccess();
+    }
+  }
+
+  /* --- Botones de nombre (copian el texto) --- */
+  var nameButtons = document.querySelectorAll('.utp-name-btn');
+  nameButtons.forEach(function(btn){
+    var timer = null;
+
+    function showCopied(){
+      btn.setAttribute('data-copied', 'true');
+      clearTimeout(timer);
+      timer = setTimeout(function(){
+        btn.setAttribute('data-copied', 'false');
+      }, 1500);
+    }
+
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var text = btn.getAttribute('data-copy-name') || '';
+      copyText(text, showCopied);
+    });
+  });
+
+  /* --- Botones de enlace (copian la URL) --- */
+  var linkButtons = document.querySelectorAll('.utp-link-btn');
+  linkButtons.forEach(function(btn){
+    var timer = null;
+
+    function showCopied(){
+      btn.setAttribute('data-copied', 'true');
+      clearTimeout(timer);
+      timer = setTimeout(function(){
+        btn.setAttribute('data-copied', 'false');
+      }, 1500);
+    }
+
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var url = btn.getAttribute('data-copy-link') || '';
+      copyText(url, showCopied);
+    });
+  });
+})();
+
+</script>
+
+</body>
+</html>
